@@ -1,0 +1,22 @@
+.button {
+  background-color: red;
+  -fx-background-color: "pink";
+}
+.bg {
+  background-color: red;
+  -fx-background-color: "red";
+  -fx-alignment: center;
+  -fx-spacing: 10px;
+}
+.bg-1 {
+  background-color: red;
+  -fx-background-color: "pink";
+  -fx-hgap: 10px;
+  -fx-vgap: 10px;
+  -fx-alignment: center;
+}
+.bg-2 {
+  background-color: red;
+  -fx-background-color: "blue";
+  -fx-font-size: 20;
+}
