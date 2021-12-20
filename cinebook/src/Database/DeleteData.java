@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.Scanner;
 
-public class Signin {
+public class DeleteData {
 
     //In This Database, there are 4 example users : 
     //Username 1 : Muhammad  |  Password 1 : muhammad01
@@ -25,30 +25,41 @@ public class Signin {
             String host = "jdbc:derby://localhost:1527/CinemaBooking_Database";
             String uName = "WIX1002_OCC5_02";
             String uPass = "siapaapplesebenarnya";
-        
+            
             //Set up a connection to the database
             Connection con = DriverManager.getConnection(host, uName, uPass);
             Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             ResultSet rs = stmt.executeQuery(SQL);
             
-            System.out.println("Please enter the following to sign in : ");
+            //Prompt user to login
+            System.out.println("\n---------------------------------------------------------------------------------");
+            System.out.println("WELCOME TO GSC!!! PLEASE ENTER THE FOLLOWING TO LOG IN AND DELETING YOUR ACCOUNT:");
+            System.out.println("---------------------------------------------------------------------------------");
             System.out.print("Username : ");
             username = input.nextLine();
             System.out.print("Password : ");
             password = input.nextLine();
             
-            rs.moveToInsertRow();
+            while( rs.next() ) {
+                
+                String username_data = rs.getString("Username");
+                String password_data = rs.getString("Password");
+                
+                if(username.equals(username_data) && password.equals(password_data)) {
+                    break;
+                }
+            }
             
-            rs.updateString("Username", username);
-            rs.updateString("Password", password);
-            //Inserts a new row
-            rs.insertRow();
-            //to commit any changes to the database what we'll do is to close our Statement object and our ResultSet object
+            System.out.print("\nPress enter to delete your account...  ");
+            input.nextLine();
+            
+            //Use deleteRow() to delete a row
+            rs.deleteRow();
+            //Close the Statement object and the ResultSet objects
             stmt.close();
             rs.close();
             
-            System.out.println("\nYou have signed in to GSC! Welcome!!!\n");
-            
+            System.out.println("\nYour account has been deleted...\n");
             
         }
         catch(SQLException err) {
@@ -56,6 +67,9 @@ public class Signin {
             System.out.println(err.getMessage());
             
         }
+        
+        
+        
         
     }
     
