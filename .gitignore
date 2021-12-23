@@ -22,4 +22,9 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 /cinebook/nbproject/private/
+<<<<<<< HEAD
 /cinebook/bin/
+=======
+/database_console/nbproject/private/
+/cinebook/build/
+>>>>>>> 1d34cbfc626d158a6dbd9fc98b3fccbad2edf7d9
