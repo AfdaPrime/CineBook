@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
@@ -18,16 +19,18 @@ import javafx.scene.layout.VBox;
 
 public class picker {
 
-    static FlowPane flow = new FlowPane();
+    FlowPane flow = new FlowPane();
 
-    public static Node placeHolder() {
+    contoller contoller = new App.contoller();
+
+    public Node placeHolder() {
         try {
             flow.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
             flow.getStyleClass().add("bg-1");
 
             for (int i = 0; i < 5; i++) {
                 InputStream stream = new FileInputStream(
-                        "D:/newCode/university/FundamentalOfProgramming/assigment/CineBook/cinebook/src/Spider-Man_No_Way_Home_poster.jpg");
+                        "D:/newCode/university/FundamentalOfProgramming/assigment/CineBook/cinebook/src/App/Spider-Man_No_Way_Home_poster.jpg");
                 Image image = new Image(stream);
                 ImageView imageView = new ImageView();
                 imageView.setImage(image);
@@ -52,7 +55,8 @@ public class picker {
                 // contoller.selectRoot(mouseEvent.getSource());
                 // }
                 // });
-                anchor.setOnMouseClicked((e) -> contoller.selectRoot(e));
+                // anchor.setOnMouseClicked((e) -> contoller.selectRoot(e));
+                anchor.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> contoller.selectRoot(e));
             }
         } catch (FileNotFoundException e) {
             System.out.println(e);

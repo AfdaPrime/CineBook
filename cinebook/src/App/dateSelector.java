@@ -7,6 +7,7 @@ import java.io.InputStream;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -18,9 +19,11 @@ import javafx.scene.layout.VBox;
 
 public class dateSelector {
 
-    static FlowPane flow = new FlowPane();
+    private static FlowPane flow = new FlowPane();
 
-    public static Node placeHolder() {
+    contoller contoller = new App.contoller();
+
+    public static Parent placeHolder() {
 
         try {
             flow.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
@@ -28,7 +31,7 @@ public class dateSelector {
 
             for (Integer i = 0; i < 20; i++) {
                 InputStream stream = new FileInputStream(
-                        "D:/newCode/university/FundamentalOfProgramming/assigment/CineBook/cinebook/src/Spider-Man_No_Way_Home_poster.jpg");
+                        "D:/newCode/university/FundamentalOfProgramming/assigment/CineBook/cinebook/src/App/Spider-Man_No_Way_Home_poster.jpg");
                 Image image = new Image(stream);
                 ImageView imageView = new ImageView();
                 imageView.setImage(image);
@@ -53,7 +56,7 @@ public class dateSelector {
                 // contoller.selectRoot(mouseEvent);
                 // }
                 // });
-                anchor.setOnMouseClicked((e) -> contoller.selectRoot(e));
+                anchor.setOnMouseClicked((e) -> contoller().selectRoot(e));
             }
 
         } catch (FileNotFoundException e) {
@@ -61,5 +64,9 @@ public class dateSelector {
         }
         return flow;
 
+    }
+
+    private static App.contoller contoller() {
+        return null;
     }
 }

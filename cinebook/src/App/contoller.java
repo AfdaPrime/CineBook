@@ -1,39 +1,43 @@
 package App;
 
-import java.beans.EventHandler;
-import java.util.EventObject;
+import javafx.scene.control.ScrollPane;
 
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-import javafx.stage.Window;
+import javafx.scene.input.MouseEvent;
+
+import javafx.scene.layout.VBox;
 
 public class contoller {
 
     // static Node x = picker.placeHolder();
 
-    static Node root = picker.placeHolder();
-    static Scene scene;
-    static Stage stage;
+    // root = new VBox();
+    VBox box = new VBox();
+    ScrollPane sPane = new ScrollPane();
+    // App.topBar topBar = new topBar();
 
-    public static void selectRoot(Event event) {
+    // dateSelector dateSelector = new App.dateSelector();
+
+    public void selectRoot(MouseEvent e) {
 
         try {
 
-            System.out.println(((Node) event.getSource()).getScene());
+            // System.out.println(e);
+            // root.getChildren().clear();
+            box.getChildren().add(dateSelector.placeHolder());
 
-            root = dateSelector.placeHolder();
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene((Parent) root);
+            sPane.setContent(box);
+            sPane.setFitToWidth(true);
+            sPane.setFitToHeight(true);
 
-            stage.setScene(scene);
+            // topBar.bar().setId("heelo");
 
-        } catch (Exception e) {
-            e.printStackTrace();
+            // root.getChildren().add(topBar.bar());
+            // root.getChildren().addAll(topBar.bar(), sPane);
+            Main.root.getChildren().set(1, sPane);
+            // ((Node) e.getSource()).getScene().setRoot(Main.root);
+
+        } catch (Exception error) {
+            error.printStackTrace();
         }
 
     }
