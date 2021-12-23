@@ -1,0 +1,57 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "mainClass": "App.Main",
+            "vmArgs": "--module-path D:/newCode/university/FundamentalOfProgramming/openjfx-17.0.1_windows-x64_bin-sdk/javafx-sdk-17.0.1/lib --add-modules javafx.controls,javafx.fxml",
+            "projectName": "CineBook_6522d124"
+        },
+        {
+            "type": "java",
+            "name": "Launch DBConnect",
+            "request": "launch",
+            "mainClass": "Database.DBConnect",
+            "projectName": "CineBook_6522d124"
+        },
+        {
+            "type": "java",
+            "name": "Launch DeleteData",
+            "request": "launch",
+            "mainClass": "Database.DeleteData",
+            "projectName": "CineBook_6522d124"
+        },
+        {
+            "type": "java",
+            "name": "Launch Login",
+            "request": "launch",
+            "mainClass": "Database.Login",
+            "projectName": "CineBook_6522d124"
+        },
+        {
+            "type": "java",
+            "name": "Launch Signin",
+            "request": "launch",
+            "mainClass": "Database.Signin",
+            "projectName": "CineBook_6522d124"
+        },
+        {
+            "type": "java",
+            "name": "Launch UpdateData",
+            "request": "launch",
+            "mainClass": "Database.UpdateData",
+            "projectName": "CineBook_6522d124"
+        },
+    ]
+}
