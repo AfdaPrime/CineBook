@@ -1,36 +1,76 @@
 package App;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.net.URL;
+
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 
 public class topBar {
+    private Group group = new Group();
+    private BorderPane anchor = new BorderPane();
+    private TextField textField = new TextField();
+    private Label text = new Label();
+    private contoller contoller = new App.contoller();
 
-    private static HBox anchor = new HBox();
-    private static TextField textField = new TextField();
-    private static Label text = new Label();
-
-    public Parent bar() {
-
+    public Parent bar(int i) {
         text.setText("GSC");
 
+        ImageView gsc = createImageView("./CineBook/cinebook/src/App/GSC-removebg-preview.png");
+        ImageView arrow = createImageView("./CineBook/cinebook/src/App/leftArrow.png");
+
+        anchor.getStyleClass().add("background_topBar");
+
+        switch (i) {
+            case 0:
+                anchor.setCenter(gsc);
+                break;
+            default:
+                anchor.setCenter(gsc);
+                anchor.setLeft(arrow);
+                break;
+
+        }
+
+        arrow.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> contoller.selectRoot(e, i - 1));
+
         anchor.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-        anchor.getStyleClass().add("bg");
-        anchor.getChildren().addAll(text, new Button("hello"), textField);
-        // anchor.addEventFilter(MouseEvent.MOUSE_PRESSED, new
-        // EventHandler<MouseEvent>() {
-        // @Override
-        // public void handle(MouseEvent mouseEvent) {
-        // System.out.println(mouseEvent);
-        // }
-        // });
+        group.getChildren().addAll(anchor);
+        anchor.setPadding(new Insets(5, 5, 5, 5));
         return anchor;
+    }
+
+    private ImageView createImageView(String x) {
+        InputStream stream;
+
+        ImageView imageView = null;
+
+        try {
+            stream = new FileInputStream(x);
+            Image image = new Image(stream);
+            imageView = new ImageView();
+            imageView.setImage(image);
+            imageView.setFitHeight(50);
+            imageView.setPreserveRatio(true);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return imageView;
     }
 
 }
