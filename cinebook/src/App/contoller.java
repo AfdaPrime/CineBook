@@ -1,10 +1,12 @@
 package App;
 
+import javafx.css.Styleable;
 import javafx.scene.control.ScrollPane;
 
 import javafx.scene.input.MouseEvent;
 
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 public class contoller {
 
@@ -13,17 +15,55 @@ public class contoller {
     // root = new VBox();
     VBox box = new VBox();
     ScrollPane sPane = new ScrollPane();
-    // App.topBar topBar = new topBar();
+    App.topBar topBar = null;
 
-    // dateSelector dateSelector = new App.dateSelector();
-
-    public void selectRoot(MouseEvent e) {
+    public void selectRoot(MouseEvent e, int i) {
 
         try {
 
-            // System.out.println(e);
             // root.getChildren().clear();
-            box.getChildren().add(dateSelector.placeHolder());
+
+            switch (i) {
+                case 0:
+                    Main.root.getChildren().set(0, new topBar().bar(i));
+                    box.getChildren().add(new picker().placeHolder());
+                    break;
+                case 1:
+                    if (e.getSource().toString().contains("VBox")) {
+
+                        Main.root.getChildren().set(0, new topBar().bar(i));
+                        VBox source = (VBox) e.getSource();
+
+                        System.out.println((source.getId()));
+                        box.getChildren().add(new dateSelector().placeHolder());
+                        break;
+                    } else {
+                        Main.root.getChildren().set(0, new topBar().bar(i));
+                        box.getChildren().add(new dateSelector().placeHolder());
+                        break;
+                    }
+
+                case 2:
+                    Main.root.getChildren().set(0, new topBar().bar(i));
+                    box.getChildren().add(new describtion().placeHolder());
+                    break;
+                case 3:
+                    Main.root.getChildren().set(0, new topBar().bar(i));
+                    box.getChildren().add(new seat().placeHolder());
+                    break;
+                case 4:
+                    Main.root.getChildren().set(0, new topBar().bar(i));
+                    box.getChildren().add(new FoodCourt().placeHolder());
+                    break;
+                case 5:
+                    Main.root.getChildren().set(0, new topBar().bar(i));
+                    box.getChildren().add(new payment().placeHolder());
+                    break;
+                default:
+                    break;
+            }
+
+            box.getStyleClass().add("bg-3");
 
             sPane.setContent(box);
             sPane.setFitToWidth(true);

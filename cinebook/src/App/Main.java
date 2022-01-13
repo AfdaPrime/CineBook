@@ -1,9 +1,11 @@
 package App;
 
 import javafx.application.Application;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -12,7 +14,7 @@ public class Main extends Application {
     }
 
     static VBox root = new VBox();
-    static Scene scene = new Scene(root);
+    static Scene scene = new Scene(root, Color.BLACK);
     static VBox box = new VBox();
     static ScrollPane sPane = new ScrollPane();
 
@@ -26,10 +28,12 @@ public class Main extends Application {
         box.getChildren().add(picker.placeHolder());
 
         sPane.setContent(box);
+
         sPane.setFitToWidth(true);
         sPane.setFitToHeight(true);
 
-        root.getChildren().addAll(topBar.bar(), sPane);
+        box.getStyleClass().add("bg-3");
+        root.getChildren().addAll(topBar.bar(0), sPane);
 
         scene.getStylesheets().add(getClass().getResource("mainStyle.css").toExternalForm());
 

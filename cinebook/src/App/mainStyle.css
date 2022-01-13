@@ -1,4 +1,5 @@
 .button {
+  -fx-font-size: 20px;
   background-color: red;
   -fx-background-color: "pink";
 }
@@ -10,13 +11,67 @@
 }
 .bg-1 {
   background-color: red;
-  -fx-background-color: "pink";
+  -fx-background-color: "blue";
+  -fx-translate-y: 10px;
   -fx-hgap: 10px;
   -fx-vgap: 10px;
   -fx-alignment: center;
 }
 .bg-2 {
-  background-color: red;
   -fx-background-color: "blue";
   -fx-font-size: 20;
+}
+.bg-3 {
+  -fx-background-color: "blue";
+}
+
+.background_selector {
+  background-color: red;
+  -fx-alignment: center;
+  -fx-background-color: "pink";
+  -fx-fill-width: true;
+  -fx-border-color: rgb(201, 172, 9);
+  -fx-border-width: 10px;
+}
+
+.image {
+  size: 80%;
+}
+
+.label {
+  -fx-font-size: 15;
+  -fx-alignment: center;
+  -fx-label-padding: 5;
+}
+
+.background_topBar {
+  -fx-fill-height: true;
+  background-color: #fdcf00;
+  -fx-background-color: #fdcf00;
+  -fx-hgap: 10px;
+  -fx-alignment: center;
+  -fx-spacing: 30px;
+}
+
+.datePane {
+  background-color: #fdcf00;
+  -fx-background-color: #fdcf00;
+  -fx-border-color: rgb(201, 172, 9);
+  -fx-border-width: 10px;
+  -fx-alignment: center;
+}
+
+.dateLabel {
+  -fx-font-size: 40;
+  -fx-alignment: center;
+  -fx-label-padding: 5;
+}
+
+.buttonSeat-x {
+  -fx-background-color: pink;
+  -fx-font-size: 15px;
+}
+.buttonSeat-v {
+  -fx-background-color: #fdcf00;
+  -fx-font-size: 15px;
 }
