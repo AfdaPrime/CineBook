@@ -14,37 +14,30 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.Line;
 import javafx.stage.Stage;
-import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
  *
  * @author Dell
  */
-public class SignUpFXMLController implements Initializable {
+public class StaffEditorController implements Initializable {
 
     @FXML
-    private Label registration;
+    private Label stafflabel;
     @FXML
-    private Label usernameLabel;
+    private Label sublabel;
     @FXML
-    private Label passwordLabel;
+    private Label movielabel;
     @FXML
-    private ImageView cinemaPicture;
+    private Label fnblabel;
     @FXML
-    private Label emailLabel;
+    private Label seatlabel;
     @FXML
-    private Label phoneLabel;
+    private Label paylabel;
     @FXML
-    private TextField emailField;
-    @FXML
-    private TextField phoneField;
-    @FXML
-    private Line line;
+    private ImageView image;
 
     /**
      * Initializes the controller class.
@@ -54,26 +47,25 @@ public class SignUpFXMLController implements Initializable {
         // TODO
     }    
 
-
     @FXML
-    private void signInButton(ActionEvent event) {
-    }
-
-    @FXML
-    private void signInPasswordInput(ActionEvent event) {
-    }
-
-    @FXML
-    private void signInUsernameInput(ActionEvent event) {
-    }
-
-    @FXML
-    private void returnLoginButton(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("LoginFXML.fxml"));
+    private void movieButton(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("StaffMovie.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    private void seatingButton(ActionEvent event) {
+    }
+
+    @FXML
+    private void paymentButton(ActionEvent event) {
+    }
+
+    @FXML
+    private void fnbButton(ActionEvent event) {
     }
     
 }

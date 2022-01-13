@@ -56,7 +56,6 @@ public class StaffLoginController implements Initializable {
 
     @FXML
     private void staffGoSignUpButton(ActionEvent event) throws IOException{
-        JOptionPane.showMessageDialog(null, "New form will be opened");
         Parent root = FXMLLoader.load(getClass().getResource("StaffSignUp.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -66,7 +65,6 @@ public class StaffLoginController implements Initializable {
 
     @FXML
     private void staffreturnLoginButton(ActionEvent event) throws IOException{
-        JOptionPane.showMessageDialog(null, "New form will be opened");
         Parent root = FXMLLoader.load(getClass().getResource("LoginFXML.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
