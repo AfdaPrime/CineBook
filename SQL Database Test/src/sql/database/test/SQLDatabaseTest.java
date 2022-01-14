@@ -27,7 +27,11 @@ public class SQLDatabaseTest {
             ResultSet rs = stmt.executeQuery(SQL);
             
             while(rs.next()){
-                System.out.println(rs.getString(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+" "+rs.getString(4));
+                System.out.println(rs.getString(1));
+                System.out.println(rs.getString(2));
+                System.out.println(rs.getString(3));
+                System.out.println(rs.getString(4));
+                System.out.println("\n");
             }
             
         }catch(SQLException e){
