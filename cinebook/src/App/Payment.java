@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package App;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -23,29 +24,28 @@ import javafx.scene.layout.VBox;
  * @author iwana
  */
 public class Payment {
-    
-        public Parent placeHolder() {
+
+    public Parent placeHolder() {
         return new Label("Payment");
     }
-    
+
     public double ticketPrice;
     public double fnbPrice;
     public double sum;
     public int ticketNumber;
     public int fnbNumber;
- 
 
     public double Payment(double ticketPrice, double fnbPrice, int ticketNumber, int fnbNumber) {
-        
+
         this.ticketPrice = ticketPrice;
         this.fnbPrice = fnbPrice;
         this.ticketNumber = ticketNumber;
         this.fnbNumber = fnbNumber;
-        
-        this.sum = (this.ticketPrice*this.ticketNumber) + (this.fnbPrice*this.fnbNumber);
-        
+
+        this.sum = (this.ticketPrice * this.ticketNumber) + (this.fnbPrice * this.fnbNumber);
+
         return this.sum;
-        
+
     }
-    
+
 }

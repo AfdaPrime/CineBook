@@ -31,8 +31,8 @@ public class topBar {
     public Parent bar(int i) {
         text.setText("GSC");
 
-        ImageView gsc = createImageView("./CineBook/cinebook/src/App/GSC-removebg-preview.png");
-        ImageView arrow = createImageView("./CineBook/cinebook/src/App/leftArrow.png");
+        ImageView gsc = createImageView("D:\\newCode\\university\\FundamentalOfProgramming\\assigment\\CineBook\\cinebook\\src\\App\\GSC-removebg-preview.png");
+        ImageView arrow = createImageView("D:\\newCode\\university\\FundamentalOfProgramming\\assigment\\CineBook\\cinebook\\src\\App\\leftArrow.png");
 
         anchor.getStyleClass().add("background_topBar");
 
