@@ -21,11 +21,19 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 
+
+
+
 public class JavaFX_QRCodeWriter extends Application {
+    
+    
     
     @Override
     public void start(Stage primaryStage) {
-        double price = 30.00;
+        
+        Payment pay = new Payment();
+        double price = pay.Payment(2.3,4.5,2,1);
+        
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
         String myWeb = String.format("Transaction Successful! RM%.2f Has been deducted from your E-wallet",price);
         int width = 300;
@@ -70,8 +78,10 @@ public class JavaFX_QRCodeWriter extends Application {
         primaryStage.show();
     }
 
+    
     public static void main(String[] args) {
         launch(args);
     }
+
     
 }
