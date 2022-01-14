@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package App;
+
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
@@ -19,17 +20,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-/**
- *
- * @web http://java-buddy.blogspot.com/
- */
+
 public class JavaFX_QRCodeWriter extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        
+        double price = 30.00;
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
-        String myWeb = "http://java-buddy.blogspot.com/";
+        String myWeb = String.format("Transaction Successful! RM%.2f Has been deducted from your E-wallet",price);
         int width = 300;
         int height = 300;
         String fileType = "png";
