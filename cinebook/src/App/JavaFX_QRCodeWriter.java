@@ -32,7 +32,7 @@ public class JavaFX_QRCodeWriter extends Application {
     public void start(Stage primaryStage) {
         
         Payment pay = new Payment();
-        double price = pay.Payment(2.3,4.5,2,1);
+        double price = pay.Payment(8.0,6.5,2,1); //(double ticketPrice, double fnbPrice, int ticketNumber, int fnbNumber)
         
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
         String myWeb = String.format("Transaction Successful! RM%.2f Has been deducted from your E-wallet",price);
@@ -73,7 +73,7 @@ public class JavaFX_QRCodeWriter extends Application {
         
         Scene scene = new Scene(root, 350, 350);
         
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("E-Wallet Payment");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
