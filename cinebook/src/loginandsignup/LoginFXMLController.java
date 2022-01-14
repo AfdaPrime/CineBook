@@ -18,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import javafx.scene.Node;
 
 /**
  * FXML Controller class
@@ -45,8 +46,8 @@ public class LoginFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-            
+    }
+
     @FXML
     private void loginUsernameInput(ActionEvent event) {
     }
@@ -60,22 +61,21 @@ public class LoginFXMLController implements Initializable {
     }
 
     @FXML
-    private void staffButton(ActionEvent event) throws IOException{
+    private void staffButton(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("StaffLogin.fxml"));
         Scene scene = new Scene(root);
-        Stage stage = new Stage();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
 
     @FXML
-    private void gotoSignUp(ActionEvent event) throws IOException{
+    private void gotoSignUp(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("SignUpFXML.fxml"));
         Scene scene = new Scene(root);
-        Stage stage = new Stage();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
 
-    
 }

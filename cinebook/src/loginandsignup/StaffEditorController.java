@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.scene.Node;
 
 /**
  * FXML Controller class
@@ -45,13 +46,13 @@ public class StaffEditorController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
-    private void movieButton(ActionEvent event) throws IOException{
+    private void movieButton(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("StaffMovie.fxml"));
         Scene scene = new Scene(root);
-        Stage stage = new Stage();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
@@ -67,5 +68,5 @@ public class StaffEditorController implements Initializable {
     @FXML
     private void fnbButton(ActionEvent event) {
     }
-    
+
 }
