@@ -57,7 +57,7 @@ public class contoller {
                     break;
                 case 5:
                     Main.root.getChildren().set(0, new topBar().bar(i));
-                    box.getChildren().add(new payment().placeHolder());
+                    box.getChildren().add(new Payment().Payment(5.0, 65.0, 2, 2));
                     break;
                 default:
                     break;

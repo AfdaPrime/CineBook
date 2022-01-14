@@ -26,4 +26,5 @@ hs_err_pid*
 /cinebook/bin/
 /database_console/nbproject/private/
 /cinebook/build/
+/cinebook/src/Database/CinemaBooking_Database
 *.vscode
