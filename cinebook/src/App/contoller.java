@@ -25,39 +25,43 @@ public class contoller {
 
             switch (i) {
                 case 0:
-                    Main.root.getChildren().set(0, new topBar().bar(i));
+                    Main.root.getChildren().set(0, new topBar().bar(i, Main.staff));
                     box.getChildren().add(new picker().placeHolder());
                     break;
                 case 1:
                     if (e.getSource().toString().contains("VBox")) {
 
-                        Main.root.getChildren().set(0, new topBar().bar(i));
+                        Main.root.getChildren().set(0, new topBar().bar(i, Main.staff));
                         VBox source = (VBox) e.getSource();
 
                         System.out.println((source.getId()));
                         box.getChildren().add(new dateSelector().placeHolder());
                         break;
                     } else {
-                        Main.root.getChildren().set(0, new topBar().bar(i));
+                        Main.root.getChildren().set(0, new topBar().bar(i, Main.staff));
                         box.getChildren().add(new dateSelector().placeHolder());
                         break;
                     }
 
                 case 2:
-                    Main.root.getChildren().set(0, new topBar().bar(i));
+                    Main.root.getChildren().set(0, new topBar().bar(i, Main.staff));
                     box.getChildren().add(new describtion().placeHolder());
                     break;
                 case 3:
-                    Main.root.getChildren().set(0, new topBar().bar(i));
+                    Main.root.getChildren().set(0, new topBar().bar(i, Main.staff));
                     box.getChildren().add(new seat().placeHolder());
                     break;
                 case 4:
-                    Main.root.getChildren().set(0, new topBar().bar(i));
+                    Main.root.getChildren().set(0, new topBar().bar(i, Main.staff));
                     box.getChildren().add(new FoodCourt().placeHolder());
                     break;
                 case 5:
-                    Main.root.getChildren().set(0, new topBar().bar(i));
-                    new Payment().Payment(5.0, 65.0, 2, 2);
+                    Main.root.getChildren().set(0, new topBar().bar(i, Main.staff));
+                    box.getChildren().add(new Payment().placeHolder());
+                    break;
+                case 6:
+                    Main.root.getChildren().set(0, new topBar().bar(i, Main.staff));
+                    new JavaFX_QRCodeWriter().start(null);
                     break;
                 default:
                     break;

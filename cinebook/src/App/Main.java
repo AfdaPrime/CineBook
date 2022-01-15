@@ -22,9 +22,12 @@ public class Main extends Application {
 
     picker picker = new App.picker();
 
+    static boolean staff = true;
+
     @Override
     public void start(Stage stage) throws Exception {
 
+        stage.setMaximized(true);
         box.getChildren().add(picker.placeHolder());
 
         sPane.setContent(box);
@@ -33,11 +36,11 @@ public class Main extends Application {
         sPane.setFitToHeight(true);
 
         box.getStyleClass().add("bg-3");
-        root.getChildren().addAll(topBar.bar(0), sPane);
+        root.getChildren().addAll(topBar.bar(0, staff), sPane);
 
         scene.getStylesheets().add(getClass().getResource("mainStyle.css").toExternalForm());
+        root.prefWidthProperty().bind(stage.widthProperty());
 
-        stage.setMaximized(true);
         stage.setScene(scene);
         stage.show();
 

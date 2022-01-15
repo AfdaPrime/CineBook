@@ -18,6 +18,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+
+import App.Main;
 import javafx.scene.Node;
 
 /**
@@ -58,6 +60,19 @@ public class LoginFXMLController implements Initializable {
 
     @FXML
     private void loginButton(ActionEvent event) {
+
+        App.Main main = new Main();
+
+        try {
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            stage.setMaximized(true);
+
+            main.start(stage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     @FXML

@@ -28,31 +28,64 @@ public class topBar {
     private Label text = new Label();
     private contoller contoller = new App.contoller();
 
-    public Parent bar(int i) {
+    private Button staffButton = new Button("staff");
+
+    public Parent bar(int i, boolean staff) {
         text.setText("GSC");
 
-        ImageView gsc = createImageView("D:\\newCode\\university\\FundamentalOfProgramming\\assigment\\CineBook\\cinebook\\src\\App\\GSC-removebg-preview.png");
-        ImageView arrow = createImageView("D:\\newCode\\university\\FundamentalOfProgramming\\assigment\\CineBook\\cinebook\\src\\App\\leftArrow.png");
+        ImageView gsc = createImageView(
+                "D:\\newCode\\university\\FundamentalOfProgramming\\assigment\\CineBook\\cinebook\\src\\App\\GSC-removebg-preview.png");
+        ImageView arrow = createImageView(
+                "D:\\newCode\\university\\FundamentalOfProgramming\\assigment\\CineBook\\cinebook\\src\\App\\leftArrow.png");
 
         anchor.getStyleClass().add("background_topBar");
 
-        switch (i) {
-            case 0:
+        if (staff) {
+
+            if (i == 0) {
                 anchor.setCenter(gsc);
-                break;
-            default:
+                anchor.setRight(staffButton);
+            } else {
                 anchor.setCenter(gsc);
                 anchor.setLeft(arrow);
-                break;
+                anchor.setRight(staffButton);
+            }
 
+        } else {
+            if (i == 0) {
+                anchor.setCenter(gsc);
+                anchor.setRight(staffButton);
+            } else {
+                anchor.setCenter(gsc);
+                anchor.setLeft(arrow);
+                anchor.setRight(staffButton);
+            }
         }
 
-        arrow.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> contoller.selectRoot(e, i - 1));
+        // switch (i) {
+        // case 0:
+        // anchor.setCenter(gsc);
+        // break;
+        // default:
+        // anchor.setCenter(gsc);
+        // anchor.setLeft(arrow);
+        // break;
+
+        // }
+
+        arrow.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> misc(e, i));
 
         anchor.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         group.getChildren().addAll(anchor);
         anchor.setPadding(new Insets(5, 5, 5, 5));
         return anchor;
+    }
+
+    private void misc(MouseEvent e, int i) {
+
+        Payment.setType();
+
+        contoller.selectRoot(e, i - 1);
     }
 
     private ImageView createImageView(String x) {

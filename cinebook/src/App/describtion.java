@@ -1,31 +1,81 @@
 package App;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.lang.ModuleLayer.Controller;
+
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 
 public class describtion {
 
-    private GridPane pane = new GridPane();
+    private HBox pane = new HBox();
+
+    private VBox vbox = new VBox();
 
     private Label title = new Label();
     private Label describtion = new Label();
-    private Button button = new Button();
+    private Button button = new Button("Book Now");
 
     public Node placeHolder() {
 
-        title.setText("Placeholder");
+        contoller contoller = new App.contoller();
 
-        title.setStyle("-fx-font-size: 40");
-        // pane.setStyle("-fx-alignment: center-left ");
-        pane.prefHeightProperty().bind(Main.scene.heightProperty());
+        try {
+            InputStream stream = new FileInputStream(
+                    "D:/newCode/university/FundamentalOfProgramming/assigment/CineBook/cinebook/src/App/Spider-Man_No_Way_Home_poster.jpg");
+            Image image = new Image(stream);
+            ImageView imageView = new ImageView();
+            imageView.setImage(image);
 
-        describtion.setText(
-                "Quis duis minim duis veniam ea ex commodo nisi voluptate ad. Lorem sint sint magna Lorem ea est occaecat duis aute nostrud pariatur reprehenderit. Eu cupidatat occaecat velit excepteur aliquip irure in labore pariatur nisi voluptate. Fugiat non deserunt adipisicing id labore deserunt ipsum irure enim esse ex magna. Tempor cupidatat et ea officia non irure minim veniam Lorem Lorem magna nostrud. Non duis culpa et amet incididunt ipsum ipsum consectetur. Est consequat amet ex cillum aliquip ea Lorem.");
+            imageView.setPreserveRatio(true);
+            imageView.setFitHeight(500);
 
-        pane.add(title, 0, 0);
-        pane.add(describtion, 0, 2);
+            title.setText("Spodemun no way home");
+
+            describtion.setText(
+                    "Esse veniam velit deserunt laboris. Minim nulla ipsum qui voluptate quis anim excepteur elit irure. Cupidatat dolore nostrud incididunt incididunt incididunt exercitation. Magna exercitation laborum amet cillum est tempor.Qui nostrud culpa eu pariatur et do veniam. Aliquip eu est id nostrud et reprehenderit ad. Ea reprehenderit esse non culpa et pariatur qui. Nulla sunt voluptate Lorem veniam anim. Ut proident dolor aliquip consequat Lorem officia id aliqua quis Lorem. Sit reprehenderit nulla Lorem est dolor cillum do. Velit cillum nisi duis exercitation reprehenderit sit aliqua duis cupidatat culpa ut.");
+
+            // describtion.setMaxSize(500, 150);
+
+            vbox.getChildren().addAll(title, describtion, button);
+
+            title.setStyle("-fx-font-size: 64");
+            describtion.setStyle("-fx-font-size: 18");
+
+            // describtion.setPrefHeight(500);
+            describtion.setPrefWidth(1000);
+            describtion.setWrapText(true);
+
+            vbox.setSpacing(50);
+
+            button.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> contoller.selectRoot(e, 3));
+
+            title.setPadding(new Insets(100, 100, 0, 0));
+            describtion.setPadding(new Insets(10, 100, 0, 0));
+
+            // vbox.setAlignment(Pos.CENTER);
+
+            pane.setAlignment(Pos.CENTER);
+
+            vbox.prefHeightProperty().bind(Main.scene.heightProperty());
+            // pane.prefWidthProperty().bind(Main.scene.widthProperty());
+
+            pane.getChildren().addAll(vbox, imageView);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         return pane;
 

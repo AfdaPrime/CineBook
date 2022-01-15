@@ -47,7 +47,7 @@ public class seat {
 
         Button next = new Button("Confirm");
 
-        next.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> contoller.selectRoot(e, 3));
+        next.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> contoller.selectRoot(e, 4));
 
         // label.setStyle("-fx-background-color: #fdcf00;");
 
@@ -75,6 +75,7 @@ public class seat {
 
     private String updateText = "";
     private Integer priceTotal = 0;
+    private int totalSeat = 0;
 
     private void collectLabel(MouseEvent e) {
 
@@ -85,9 +86,11 @@ public class seat {
 
         String newCode = new String();
 
+        // change button colour when press
         if (b.getStyleClass().toString().equals("button buttonSeat-x")) {
             b.getStyleClass().set(1, "buttonSeat-v");
 
+            totalSeat += 1;
             priceTotal += 20;
             price.setText("Rm " + priceTotal.toString());
 
@@ -96,6 +99,7 @@ public class seat {
         } else {
             b.getStyleClass().set(1, "buttonSeat-x");
 
+            totalSeat -= 1;
             priceTotal -= 20;
             price.setText("Rm " + priceTotal.toString());
 
@@ -115,6 +119,8 @@ public class seat {
             updateText = newCode;
 
         }
+
+        Payment.setTicketNumber(totalSeat);
         seat.setText(updateText);
         pane.getChildren().set(1, seat);
         pane.getChildren().set(2, price);
