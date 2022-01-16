@@ -75,3 +75,10 @@
   -fx-background-color: #fdcf00;
   -fx-font-size: 15px;
 }
+
+.payment {
+  -fx-border-width: 10px;
+  -fx-border-color: rgb(201, 172, 9);
+  -fx-font-size: 20;
+  -fx-background-color: red;
+}

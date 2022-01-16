@@ -61,7 +61,7 @@ public class contoller {
                     break;
                 case 6:
                     Main.root.getChildren().set(0, new topBar().bar(i, Main.staff));
-                    new JavaFX_QRCodeWriter().start(null);
+                    box.getChildren().add(new JavaFX_QRCodeWriter().placeHolder());
                     break;
                 default:
                     break;

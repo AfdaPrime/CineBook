@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.List;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -21,11 +22,8 @@ import javafx.scene.layout.VBox;
 public class FoodCourt {
 
     private VBox pane = new VBox();
-    // private Integer x = 0;
 
     private contoller contoller = new App.contoller();
-
-    Payment pay = new Payment();
 
     public Parent placeHolder() {
 
@@ -42,7 +40,11 @@ public class FoodCourt {
 
                 VBox anchor = new VBox();
 
-                anchor.getChildren().addAll(imageView, createPlaceholder(i));
+                // anchor.setStyle("-fx-border-width: 50px");
+                // anchor.setStyle("-fx-border-color: rgb(201, 172, 9)");
+
+                anchor.getChildren().addAll(imageView, createPricePlaceholder(i), createPlaceholder(i));
+                // flow.setPadding(new Insets(10));
 
                 flow.getChildren().add(anchor);
 
@@ -52,7 +54,7 @@ public class FoodCourt {
 
         }
 
-        flow.setStyle(" -fx-background-color: #fdcf00;");
+        // flow.setStyle(" -fx-background-color: #fdcf00;");
 
         flow.setAlignment(Pos.CENTER);
 
@@ -62,9 +64,50 @@ public class FoodCourt {
 
         pane.setAlignment(Pos.CENTER);
         b.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> check(e, flow));
+
+        pane.setSpacing(20);
         pane.getChildren().addAll(flow, b);
+        pane.prefHeightProperty().bind(Main.scene.heightProperty());
 
         return pane;
+
+    }
+
+    private Node createPricePlaceholder(int i) {
+
+        HBox priceBox = new HBox();
+        Label label = new Label();
+
+        String price = "";
+
+        switch (i) {
+            case 0:
+                price += "Combo A\tRM 50";
+                break;
+            case 1:
+                price += "Combo B\tRM 30.1";
+                break;
+            case 2:
+                price += "Popcorn\tRM 30.1";
+                break;
+            case 3:
+                price += "Nuget\tRM 3.01";
+                break;
+            case 4:
+                price += "Carrot\tRM 0.01";
+                break;
+            default:
+                break;
+        }
+
+        label.setText(price);
+        label.setStyle("-fx-font-size: 24px");
+
+        priceBox.setStyle("-fx-background-color: red");
+        priceBox.getChildren().add(label);
+        priceBox.setAlignment(Pos.CENTER);
+
+        return priceBox;
 
     }
 
@@ -77,6 +120,8 @@ public class FoodCourt {
 
         // label.setId(i.toString());
 
+        placeholder.setPadding(new Insets(5));
+        placeholder.setStyle(" -fx-background-color: red");
         placeholder.getChildren().addAll(plus, minus, label);
 
         placeholder.setSpacing(10);
@@ -130,7 +175,7 @@ public class FoodCourt {
 
             VBox tmp = (VBox) flow.getChildren().get(i);
 
-            HBox temphbox = (HBox) tmp.getChildren().get(1);
+            HBox temphbox = (HBox) tmp.getChildren().get(2);
 
             String total = temphbox.getChildren().get(2).toString();
 
@@ -141,7 +186,7 @@ public class FoodCourt {
 
             Integer x = Integer.parseInt(labelTotal);
 
-            pay.setType(Integer.parseInt(temphbox.getId()), x);
+            Payment.setType(Integer.parseInt(temphbox.getId()), x);
         }
 
         contoller.selectRoot(e, 5);

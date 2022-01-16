@@ -8,10 +8,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class Main extends Application {
-    public static void main(String[] args) {
-        launch(args);
-    }
+public class Main {
+    // public static void main(String[] args) {
+    // launch(args);
+    // }
 
     static VBox root = new VBox();
     static Scene scene = new Scene(root, Color.BLACK);
@@ -24,8 +24,9 @@ public class Main extends Application {
 
     static boolean staff = true;
 
-    @Override
-    public void start(Stage stage) throws Exception {
+    public void start() {
+
+        Stage stage = new Stage();
 
         stage.setMaximized(true);
         box.getChildren().add(picker.placeHolder());

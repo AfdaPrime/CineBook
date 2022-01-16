@@ -66,9 +66,9 @@ public class LoginFXMLController implements Initializable {
         try {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-            stage.setMaximized(true);
-
-            main.start(stage);
+            // stage.setMaximized(true);
+            stage.close();
+            main.start();
         } catch (Exception e) {
             e.printStackTrace();
         }

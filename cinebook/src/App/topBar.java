@@ -27,8 +27,10 @@ public class topBar {
     private TextField textField = new TextField();
     private Label text = new Label();
     private contoller contoller = new App.contoller();
+    private HBox hbox = new HBox();
 
-    private Button staffButton = new Button("staff");
+    private Button logOut = new Button("Log Out");
+    private Button staffButton = new Button("Staff");
 
     public Parent bar(int i, boolean staff) {
         text.setText("GSC");
@@ -40,38 +42,31 @@ public class topBar {
 
         anchor.getStyleClass().add("background_topBar");
 
+        hbox.setSpacing(10);
+
         if (staff) {
+
+            hbox.getChildren().addAll(staffButton, logOut);
 
             if (i == 0) {
                 anchor.setCenter(gsc);
-                anchor.setRight(staffButton);
+                anchor.setRight(hbox);
             } else {
                 anchor.setCenter(gsc);
                 anchor.setLeft(arrow);
-                anchor.setRight(staffButton);
+                anchor.setRight(hbox);
             }
 
         } else {
             if (i == 0) {
                 anchor.setCenter(gsc);
-                anchor.setRight(staffButton);
+                anchor.setRight(logOut);
             } else {
                 anchor.setCenter(gsc);
                 anchor.setLeft(arrow);
-                anchor.setRight(staffButton);
+                anchor.setRight(logOut);
             }
         }
-
-        // switch (i) {
-        // case 0:
-        // anchor.setCenter(gsc);
-        // break;
-        // default:
-        // anchor.setCenter(gsc);
-        // anchor.setLeft(arrow);
-        // break;
-
-        // }
 
         arrow.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> misc(e, i));
 
@@ -85,7 +80,13 @@ public class topBar {
 
         Payment.setType();
 
-        contoller.selectRoot(e, i - 1);
+        if (i == 6) {
+
+            contoller.selectRoot(e, 0);
+        } else {
+            contoller.selectRoot(e, i - 1);
+        }
+
     }
 
     private ImageView createImageView(String x) {
