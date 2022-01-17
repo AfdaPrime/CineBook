@@ -20,7 +20,7 @@
 
 
 # Managerial Report
-
+**1.	The formation of the team
 
 
 # Source Code
