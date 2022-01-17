@@ -1,7 +1,9 @@
-# WIX1002 Fundamentals of Programming
-# Project 3: Cinema Online Ticketing System
-## Tutorial Group: Group 5
-## Lecturer Name: Dr Nor Badrul Anuar bin Juma'at
+# WIX1002 Fundamentals of Programming Assignment Project
+**Project 3: Cinema Online Ticketing System**
+
+**Tutorial Group: Group 5**
+
+**Lecturer Name: Dr Nor Badrul Anuar bin Juma'at**
 
 **Group Members :**
 
