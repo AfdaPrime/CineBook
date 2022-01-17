@@ -36,6 +36,7 @@ public class seat {
     private static String hall = new String();
     private static String branch = new String();
 
+    private static String name = new String();
     private Button screen = new Button("Screen");
 
     public static void setSeatSelection(String movie, String hall, String branch) {
@@ -43,6 +44,12 @@ public class seat {
         seat.movie = movie;
         seat.hall = hall;
         seat.branch = branch;
+    }
+
+    public static void setName(String matricCustomer) {
+
+        name = matricCustomer;
+
     }
 
     public Node placeHolder() {
@@ -126,7 +133,7 @@ public class seat {
                         grid.add(b, j, i, 2, 1);
 
                         // System.out.println(grid.);
-                        b.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> collectLabel(e, confirm));
+                        b.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> collectLabel(e, confirm, "premium"));
 
                     }
 
@@ -152,7 +159,7 @@ public class seat {
                         b.getStyleClass().add("buttonSeat-x");
                         b.setPrefWidth(50);
                         grid.add(b, j, i, 2, 1);
-                        b.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> collectLabel(e, confirm));
+                        b.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> collectLabel(e, confirm, "classic"));
 
                     }
                 }
@@ -162,7 +169,7 @@ public class seat {
             e1.printStackTrace();
         }
 
-        confirm.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> contoller.selectRoot(e, 4));
+        confirm.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> misc(e, db));
         // label.setStyle("-fx-background-color: #fdcf00;");
 
         seatLabel.setPrefHeight(40);
@@ -206,7 +213,9 @@ public class seat {
 
     }
 
-    private void collectLabel(MouseEvent e, Button confirm) {
+    private void collectLabel(MouseEvent e, Button confirm, String state) {
+
+        int priceInfo = 0;
 
         Label seat = new Label();
         Label price = new Label();
@@ -220,12 +229,26 @@ public class seat {
 
         price.setStyle("-fx-font-size: 24px");
 
+        if (state.equals("premium")) {
+
+            priceInfo = 100;
+
+        } else {
+
+            if (name != null) {
+                priceInfo = 11;
+            } else {
+                priceInfo = 14;
+            }
+
+        }
+
         // change button colour when press
         if (b.getStyleClass().toString().equals("button buttonSeat-x")) {
             b.getStyleClass().set(1, "buttonSeat-v");
 
             totalSeat += 1;
-            priceTotal += 20;
+            priceTotal += priceInfo;
             price.setText("Rm " + priceTotal.toString());
 
             confirm.setDisable(false);
@@ -236,7 +259,7 @@ public class seat {
             b.getStyleClass().set(1, "buttonSeat-x");
 
             totalSeat -= 1;
-            priceTotal -= 20;
+            priceTotal -= priceInfo;
             price.setText("Rm " + priceTotal.toString());
 
             String[] msg = updateText.split(" ");
@@ -259,12 +282,24 @@ public class seat {
         if (totalSeat == 0) {
             confirm.setDisable(true);
         }
+        if (Integer.parseInt(hall) == 5 || Integer.parseInt(hall) == 6 || Integer.parseInt(hall) == 7
+                || Integer.parseInt(hall) == 8) {
 
-        Payment.setTicketNumber(totalSeat);
+            Payment.setTicketNumber(totalSeat, "premium");
+        } else {
+
+            Payment.setTicketNumber(totalSeat, "classic");
+        }
         seat.setText(updateText);
         SendEmail.setSeat(updateText);
         pane.getChildren().set(1, seat);
         pane.getChildren().set(2, price);
+    }
+
+    private void misc(MouseEvent e, dataBase db) {
+
+        db.close();
+        contoller.selectRoot(e, 4);
     }
 
 }

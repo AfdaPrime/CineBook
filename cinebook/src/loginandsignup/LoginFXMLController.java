@@ -20,6 +20,9 @@ import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 
 import App.Main;
+import App.Payment;
+import App.seat;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -81,17 +84,20 @@ public class LoginFXMLController implements Initializable {
             String password = this.passwordFeild.getText();
 
             customer.previous();
-            
+
             while (customer.next()) {
 
-                if (customer.getString("USERNAME").equals(username) && customer.getString("PASSWORD").equals(password)) {
+                if (customer.getString("USERNAME").equals(username)
+                        && customer.getString("PASSWORD").equals(password)) {
 
+                    Payment.setName(customer.getString("MATRIC_NUMBER"));
+                    seat.setName(customer.getString("MATRIC_NUMBER"));
                     try {
                         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         App.Main main = new Main();
-                        
+
                         Main.staff = false;
-                        
+
                         stage.close();
                         main.start();
                         db.close();
@@ -114,7 +120,6 @@ public class LoginFXMLController implements Initializable {
                 }
 
             }
-            
 
         } catch (SQLException ex) {
             Logger.getLogger(LoginFXMLController.class.getName()).log(Level.SEVERE, null, ex);

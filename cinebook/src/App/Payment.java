@@ -4,8 +4,11 @@
  */
 package App;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import Database.dataBase;
 import SendEmail.SendEmail;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -25,6 +28,9 @@ public class Payment {
     private static ArrayList<ArrayList<Integer>> fnb = new ArrayList<>();
     private static double sum = 0;
     private static int ticketNumber = 0;
+    private static String state = new String();
+
+    private static String name = new String();
 
     private contoller contoller = new App.contoller();
 
@@ -35,6 +41,12 @@ public class Payment {
     public static void setType() {
 
         fnb = new ArrayList<>();
+
+    }
+
+    public static void setName(String matricCustomer) {
+
+        name = matricCustomer;
 
     }
 
@@ -49,8 +61,9 @@ public class Payment {
 
     }
 
-    public static void setTicketNumber(int ticketNumber) {
+    public static void setTicketNumber(int ticketNumber, String state) {
         Payment.ticketNumber = ticketNumber;
+        Payment.state = state;
     }
 
     private Label movie = new Label();
@@ -59,6 +72,34 @@ public class Payment {
     private Button button = new Button("Pay");
 
     public Parent placeHolder() {
+
+        dataBase db = new dataBase();
+
+        ResultSet movieSet = db.movie();
+
+        System.out.println(name);
+
+        try {
+            while (movieSet.next()) {
+
+                if (name != null) {
+
+                    Payment.ticketPrice = 11;
+
+                } else {
+
+                    Payment.ticketPrice = 14;
+
+                }
+
+                if (state.equals("premium")) {
+                    Payment.ticketPrice = 100;
+                }
+
+            }
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        }
 
         String recipt = "";
         String fnbType = "";
