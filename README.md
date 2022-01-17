@@ -24,7 +24,7 @@
 
 Our team consists of five members, leader is Iwan Bin Amri and members are Muhammad Idzhans Khairi, Nor Aniq Haqym bin Nor Azman, Afiq Danish bin Affindi and Rifqi Fahim bin Rohanan. We formed our group by filling up our names in the grouping spreadsheet Dr. Badrul had prepared. Though none of us knew each other, we managed to cooperate with one another over time. The leader was selected after the topic of the assignment was determined. Iwan was elected leader because he had done a similar assignment during foundation which could act as a guideline on what needs to be done. Thus the group was formed and the workload was split up.
 
-**2.	Role and Assigned work for each of the members**
+**2.	Role and assigned work for each of the members**
 
 | **Group Member**             | **Role**                              |
 | ---------------------------- | ------------------------------------- |
@@ -47,6 +47,7 @@ Our team consists of five members, leader is Iwan Bin Amri and members are Muham
 ![Gantt Chart](https://github.com/AfdaPrime/CineBook/blob/main/gantt.png)
 
 **4.	Problems and Solutions**
+
 Problems Faced during the project
 ```
 -	The online learning environment made it hard to get to know each other making cooperation among the group members difficult.
