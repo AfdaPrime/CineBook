@@ -1,5 +1,6 @@
 package App;
 
+import Database.dataBase;
 import javafx.css.Styleable;
 import javafx.scene.control.ScrollPane;
 
@@ -11,42 +12,42 @@ import javafx.scene.text.Text;
 public class contoller {
 
     // static Node x = picker.placeHolder();
-
     // root = new VBox();
     VBox box = new VBox();
     ScrollPane sPane = new ScrollPane();
     App.topBar topBar = null;
 
-    public void selectRoot(MouseEvent e, int i) {
+    private static Integer id = 0;
 
+
+    public void selectRoot(MouseEvent e, int i  ) {
+
+        
         try {
 
             // root.getChildren().clear();
-
             switch (i) {
                 case 0:
                     Main.root.getChildren().set(0, new topBar().bar(i, Main.staff));
                     box.getChildren().add(new picker().placeHolder());
                     break;
+
                 case 1:
                     if (e.getSource().toString().contains("VBox")) {
-
-                        Main.root.getChildren().set(0, new topBar().bar(i, Main.staff));
                         VBox source = (VBox) e.getSource();
-
-                        System.out.println((source.getId()));
-                        box.getChildren().add(new dateSelector().placeHolder());
-                        break;
-                    } else {
-                        Main.root.getChildren().set(0, new topBar().bar(i, Main.staff));
-                        box.getChildren().add(new dateSelector().placeHolder());
-                        break;
+                        this.id = Integer.parseInt(source.getId());
+                        System.out.println(id);
                     }
-
-                case 2:
-                    Main.root.getChildren().set(0, new topBar().bar(i, Main.staff));
-                    box.getChildren().add(new describtion().placeHolder());
+                    Main.root.getChildren().set(0, new topBar().bar(i, Main.staff ));
+                    box.getChildren().add(new describtion().placeHolder(this.id));
                     break;
+                case 2:
+
+                    Main.root.getChildren().set(0, new topBar().bar(i, Main.staff));
+
+                    box.getChildren().add(new dateSelector().placeHolder(id));
+                    break;
+
                 case 3:
                     Main.root.getChildren().set(0, new topBar().bar(i, Main.staff));
                     box.getChildren().add(new seat().placeHolder());
@@ -74,7 +75,6 @@ public class contoller {
             sPane.setFitToHeight(true);
 
             // topBar.bar().setId("heelo");
-
             // root.getChildren().add(topBar.bar());
             // root.getChildren().addAll(topBar.bar(), sPane);
             Main.root.getChildren().set(1, sPane);

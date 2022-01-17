@@ -1,5 +1,6 @@
 package App;
 
+import Database.dataBase;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -33,6 +34,9 @@ public class topBar {
     private Button staffButton = new Button("Staff");
 
     public Parent bar(int i, boolean staff) {
+        
+  
+        
         text.setText("GSC");
 
         ImageView gsc = createImageView(

@@ -31,119 +31,133 @@ import javafx.scene.control.Button;
 
 public class SendEmail {
 
-	private static String seatPlace = new String();
-	private static String fnbPlace = new String();
+    private static String seatPlace = new String();
+    private static String fnbPlace = new String();
 
-	public static void setFnbPlace(String fnbPlace) {
-		SendEmail.fnbPlace = "";
+    private static String movie = new String();
+    private static String date = new String();
+    private static String time = new String();
+    private static String location = new String();
+    private static String hall = new String();
 
-		SendEmail.fnbPlace = fnbPlace;
-	}
+    public static void setMovie(String date,String movie,String time,String location,String hall) {
+        SendEmail.date = date;
+        SendEmail.movie = movie;
+        SendEmail.time = time;
+        SendEmail.location = location;
+        SendEmail.hall = hall;
+    }
 
-	public static void setSeat(String seat) {
-		SendEmail.seatPlace = "";
+    public static void setFnbPlace(String fnbPlace) {
+        SendEmail.fnbPlace = "";
 
-		SendEmail.seatPlace = seat;
-	}
+        SendEmail.fnbPlace = fnbPlace;
+    }
 
-	public void sendEmail() {
+    public static void setSeat(String seat) {
+        SendEmail.seatPlace = "";
 
-		// authentication info
-		final String username = "cubacinema118@gmail.com";
-		final String password = "cubacinema123";
-		String fromEmail = "cubacinema118@gmail.com";
-		String toEmail = "afiq.danish306@gmail.com";
+        SendEmail.seatPlace = seat;
+    }
 
-		Properties properties = new Properties();
-		properties.put("mail.smtp.auth", "true");
-		properties.put("mail.smtp.starttls.enable", "true");
-		properties.put("mail.smtp.host", "smtp.gmail.com");
-		properties.put("mail.smtp.port", "587");
+    public void sendEmail() {
 
-		Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
-			@Override
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(username, password);
-			}
-		});
+        // authentication info
+        final String username = "cubacinema118@gmail.com";
+        final String password = "cubacinema123";
+        String fromEmail = "cubacinema118@gmail.com";
+        String toEmail = "afiq.danish306@gmail.com";
 
-		// Qr element
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
 
-		Random random = new Random();
+        Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
 
-		// qrID Generator
+        // Qr element
+        Random random = new Random();
 
-		String qrID = "";
+        // qrID Generator
+        String qrID = "";
 
-		String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#$%&";
+        String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#$%&";
 
-		for (int i = 0; i < 20; i++) {
-			// Add a random char from the chars string to the rand string
-			qrID += chars.toCharArray()[new Random().nextInt(chars.length())];
-		}
+        for (int i = 0; i < 20; i++) {
+            // Add a random char from the chars string to the rand string
+            qrID += chars.toCharArray()[new Random().nextInt(chars.length())];
+        }
 
-		String movie = "Spodemum";
-		String date = "69/69";
-		String time = "14.30";
-		String location = "midvalley";
-		String hall = "10";
-		String seat = seatPlace;
-		String fnb = fnbPlace;
+        String movie = SendEmail.movie;
+        String date = SendEmail.date;
+        String time = SendEmail.time;
+        String location = SendEmail.location;
+        String hall = SendEmail.hall;
+        String seat = seatPlace;
+        String fnb = fnbPlace;
 
-		// QR generator
+        // QR generator
+        try {
+            BitMatrix bitMatrix = new MultiFormatWriter().encode(qrID, BarcodeFormat.QR_CODE, 500, 500);
 
-		try {
-			BitMatrix bitMatrix = new MultiFormatWriter().encode(qrID, BarcodeFormat.QR_CODE, 500, 500);
+            MatrixToImageWriter.writeToPath(bitMatrix, "png", Paths.get(
+                    "D:\\newCode\\university\\FundamentalOfProgramming\\assigment\\CineBook\\cinebook\\src\\SendEmail\\qr.png"));
+        } catch (IOException | WriterException e1) {
 
-			MatrixToImageWriter.writeToPath(bitMatrix, "png", Paths.get("D:\\newCode\\university\\FundamentalOfProgramming\\assigment\\CineBook\\cinebook\\src\\SendEmail\\qr.png"));
-		} catch (IOException | WriterException e1) {
+            e1.printStackTrace();
+        }
 
-			e1.printStackTrace();
-		}
+        // Start our mail message
+        MimeMessage msg = new MimeMessage(session);
+        try {
+            msg.setFrom(new InternetAddress(fromEmail));
+            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
+            msg.setSubject("Subject Line");
 
-		// Start our mail message
-		MimeMessage msg = new MimeMessage(session);
-		try {
-			msg.setFrom(new InternetAddress(fromEmail));
-			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
-			msg.setSubject("Subject Line");
+            Multipart emailContent = new MimeMultipart();
 
-			Multipart emailContent = new MimeMultipart();
+            // Text body part
+            MimeBodyPart textBodyPart = new MimeBodyPart();
+            textBodyPart.setText("Movie: " + movie + "\nDate: " + date + "\nTime: " + time + "\nLocation: " + location
+                    + "\nHall: " + hall + "\nSeat: " + seat + "\nFood and bervages: " + fnb
+                    + "\n\nThank you for watching with GSC.");
 
-			// Text body part
-			MimeBodyPart textBodyPart = new MimeBodyPart();
-			textBodyPart.setText("Movie: " + movie + "\nDate: " + date + "\nTime" + time + "\nLocation: " + location
-					+ "\nHall: " + hall + "\nSeat: " + seat + "\nFood and bervages: " + fnb
-					+ "\n\nThank you for watching with GSC.");
+            // Attachment body part.
+            MimeBodyPart pdfAttachment = new MimeBodyPart();
+            pdfAttachment.attachFile(
+                    "D:\\newCode\\university\\FundamentalOfProgramming\\assigment\\CineBook\\cinebook\\src\\SendEmail\\qr.png");
 
-			// Attachment body part.
-			MimeBodyPart pdfAttachment = new MimeBodyPart();
-			pdfAttachment.attachFile("D:\\newCode\\university\\FundamentalOfProgramming\\assigment\\CineBook\\cinebook\\src\\SendEmail\\qr.png");
+            // Attach body parts
+            emailContent.addBodyPart(textBodyPart);
+            emailContent.addBodyPart(pdfAttachment);
 
-			// Attach body parts
-			emailContent.addBodyPart(textBodyPart);
-			emailContent.addBodyPart(pdfAttachment);
+            // Attach multipart to message
+            msg.setContent(emailContent);
 
-			// Attach multipart to message
-			msg.setContent(emailContent);
+            Transport.send(msg);
 
-			Transport.send(msg);
+            File file = new File(
+                    "D:\\newCode\\university\\FundamentalOfProgramming\\assigment\\CineBook\\cinebook\\src\\SendEmail\\qr.png");
 
-			File file = new File("D:\\newCode\\university\\FundamentalOfProgramming\\assigment\\CineBook\\cinebook\\src\\SendEmail\\qr.png");
+            if (file.delete()) // delete() will delete the selected file from system and return true if deletes
+            // successfully else it'll return false
+            {
+                System.out.println("Selected File deleted successfully");
+            } else {
+                System.out.println("Failed to delete the selected file");
+            }
 
-			if (file.delete()) // delete() will delete the selected file from system and return true if deletes
-								// successfully else it'll return false
-			{
-				System.out.println("Selected File deleted successfully");
-			} else {
-				System.out.println("Failed to delete the selected file");
-			}
+            System.out.println("Sent message");
+        } catch (MessagingException | IOException e) {
+            e.printStackTrace();
+        }
 
-			System.out.println("Sent message");
-		} catch (MessagingException | IOException e) {
-			e.printStackTrace();
-		}
-
-	}
+    }
 
 }

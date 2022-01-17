@@ -33,7 +33,7 @@ public class FoodCourt {
 
             try {
                 InputStream stream = new FileInputStream(
-                        "D:/newCode/university/FundamentalOfProgramming/assigment/CineBook/cinebook/src/App/Spider-Man_No_Way_Home_poster.jpg");
+                        "D:\\newCode\\university\\FundamentalOfProgramming\\assigment\\CineBook\\cinebook\\src\\Image\\Spider-Man_No_Way_Home_poster.jpg");
                 Image image = new Image(stream);
                 ImageView imageView = new ImageView();
                 imageView.setImage(image);
@@ -82,27 +82,30 @@ public class FoodCourt {
 
         switch (i) {
             case 0:
-                price += "Combo A\tRM 50";
+                price += "Regular Combo :\n 1X Caramel Popcorn Regular, 1X Soft Drink Regular\nRM 14.00";
                 break;
             case 1:
-                price += "Combo B\tRM 30.1";
+                price += "Large Combo :\n 1X Caramel Popcorn Large, 1X  Soft Drink Large      \nRM 18.00";
                 break;
             case 2:
-                price += "Popcorn\tRM 30.1";
+                price += "Chicken Hotdog Combo :\n 1X Chicken Hotdog, 1X Soft Drink           \nRM 13.00";
                 break;
             case 3:
-                price += "Nuget\tRM 3.01";
+                price += "Beef Hotdog Combo :\n 1X Beef Hotdog, 1X Soft Drink                 \nRM 13.00";
                 break;
             case 4:
-                price += "Carrot\tRM 0.01";
+                price += "Nugget Combo :\n 1X Nugget Large, 1X Soft Drink                     \nRM 16.50";
                 break;
             default:
                 break;
         }
 
         label.setText(price);
-        label.setStyle("-fx-font-size: 24px");
-
+        label.setAlignment(Pos.CENTER);
+        label.setStyle("-fx-font-size: 18px");
+        label.setPrefWidth(250);
+        label.setWrapText(true);
+        
         priceBox.setStyle("-fx-background-color: red");
         priceBox.getChildren().add(label);
         priceBox.setAlignment(Pos.CENTER);

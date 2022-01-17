@@ -79,7 +79,7 @@ public class Payment {
         String recipt = "";
         String fnbType = "";
 
-        recipt += "Seat     X" + Payment.ticketNumber + "\t\t" + "RM " + (Payment.ticketNumber * Payment.ticketPrice)
+        recipt += "Seat     X        " + Payment.ticketNumber + "\t\t\t\t\t" + "RM " + (Payment.ticketNumber * Payment.ticketPrice)
                 + "\n";
 
         this.sum += (Payment.ticketNumber * Payment.ticketPrice);
@@ -93,24 +93,24 @@ public class Payment {
 
                 switch (fnb.get(i).get(0)) {
                     case 0:
-                        type = "Combo A";
-                        price = 50;
+                        type = "Regular Combo            ";
+                        price = 14.0;
                         break;
                     case 1:
-                        type = "Combo B";
-                        price = 30.1;
+                        type = "Large Combo              ";
+                        price = 18.00;
                         break;
                     case 2:
-                        type = "Popcorn";
-                        price = 30.1;
+                        type = "Chicken Hotdog Combo";
+                        price = 13.00;
                         break;
                     case 3:
-                        type = "Nuget  ";
-                        price = 3.01;
+                        type = "Beef Hotdog Combo        ";
+                        price = 13.00;
                         break;
                     case 4:
-                        type = "Carrot ";
-                        price = 0.01;
+                        type = "Nugget Combo             ";
+                        price = 16.50;
                         break;
                     default:
                         break;
@@ -119,7 +119,7 @@ public class Payment {
                 this.sum += (price * fnb.get(i).get(1));
 
                 fnbType += type + " ";
-                recipt += type + "  X" + fnb.get(i).get(1) + "\t\t" + "RM "
+                recipt += type + "  X" + fnb.get(i).get(1) + "\t\t\t" + "RM "
                         + String.format("%.2f", (price * fnb.get(i).get(1)))
                         + "\n";
 
@@ -127,8 +127,8 @@ public class Payment {
 
         }
 
-        recipt += "---------------------------------\n";
-        recipt += "Total:  \t\t\t" + "RM " + String.format("%.2f", this.sum);
+        recipt += "----------------------------------------------------\n";
+        recipt += "Total:  \t\t\t\t\t             " + "RM " + String.format("%.2f", this.sum);
 
         SendEmail.setFnbPlace(fnbType);
         movie.setText(recipt);
