@@ -4,30 +4,14 @@
  */
 package App;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 
 import SendEmail.SendEmail;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 /**
@@ -79,7 +63,8 @@ public class Payment {
         String recipt = "";
         String fnbType = "";
 
-        recipt += "Seat     X        " + Payment.ticketNumber + "\t\t\t\t\t" + "RM " + (Payment.ticketNumber * Payment.ticketPrice)
+        recipt += "Seat     X        " + Payment.ticketNumber + "\t\t\t\t\t" + "RM "
+                + (Payment.ticketNumber * Payment.ticketPrice)
                 + "\n";
 
         this.sum += (Payment.ticketNumber * Payment.ticketPrice);

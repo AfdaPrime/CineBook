@@ -28,7 +28,7 @@ public class dataBase {
     private ResultSet connection(String SQL) {
         try {
 
-            //Set up a connection to the database
+            // Set up a connection to the database
             Connection con = DriverManager.getConnection(host, uName, uPass);
 
             this.stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
@@ -59,26 +59,36 @@ public class dataBase {
         return rs;
     }
 
-    public ResultSet customer(){
-        
-         this.SQL += ".CUSTOMER_INFO";
+    public ResultSet customer() {
+
+        this.SQL += ".CUSTOMER_INFO";
 
         this.rs = connection(SQL);
 
         return rs;
-        
+
     }
-    
-    public ResultSet staff(){
-        
-         this.SQL += ".STAFF_INFO";
+
+    public ResultSet staff() {
+
+        this.SQL += ".STAFF_INFO";
 
         this.rs = connection(SQL);
 
         return rs;
-        
+
     }
-    
+
+    public ResultSet seat() {
+
+        this.SQL += ".HALL_SEAT_STATUS";
+
+        this.rs = connection(SQL);
+
+        return rs;
+
+    }
+
     public void close() {
         try {
             rs.close();

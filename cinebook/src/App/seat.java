@@ -3,7 +3,10 @@ package App;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
+import Database.dataBase;
 import SendEmail.SendEmail;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -26,10 +29,21 @@ public class seat {
     private contoller contoller = new App.contoller();
 
     private VBox pane = new VBox();
-    private Label seat = new Label(" ");
+    private Label seatLabel = new Label(" ");
     private Label price = new Label("RM 0");
 
+    private static String movie = new String();
+    private static String hall = new String();
+    private static String branch = new String();
+
     private Button screen = new Button("Screen");
+
+    public static void setSeatSelection(String movie, String hall, String branch) {
+
+        seat.movie = movie;
+        seat.hall = hall;
+        seat.branch = branch;
+    }
 
     public Node placeHolder() {
         GridPane grid = new GridPane();
@@ -37,25 +51,121 @@ public class seat {
 
         confirm.setDisable(true);
 
-        for (int i = 0; i < 18; i++) {
-            if (i == 2 || i == 3 || i == 14 || i == 15) {
-                continue;
-            }
-            for (int j = 0; j < 8; j++) {
+        dataBase db = new dataBase();
 
-                Button b = new Button(j + "|" + i);
+        ResultSet seatSet = db.seat();
 
-                b.getStyleClass().add("buttonSeat-x");
-                b.setPrefWidth(50);
-                grid.add(b, i, j, 2, 1);
-                b.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> collectLabel(e, confirm));
+        // seat
+        try {
+            // while (seatSet.next()) {
+
+            // int i = 0;
+            // int j = 0;
+
+            // if (Integer.parseInt(hall) == 5 || Integer.parseInt(hall) == 6 ||
+            // Integer.parseInt(hall) == 7
+            // || Integer.parseInt(hall) == 8) {
+
+            // if (i == 7) {
+
+            // i = 0;
+
+            // }
+
+            // Button b = new Button(seatSet.getString("SEAT_NUMBER"));
+            // // seatSet.next();
+            // b.getStyleClass().add("buttonSeat-x");
+            // b.setPrefWidth(50);
+            // grid.add(b, i, j, 2, 1);
+            // b.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> collectLabel(e, confirm));
+
+            // } else {
+
+            // if (i == 12) {
+
+            // i = 0;
+
+            // }
+
+            // }
+
+            // }
+
+            while (seatSet.next()) {
+
+                if (seatSet.getString("BRANCH").equals(branch) && seatSet.getString("HALL_NUMBER").equals(hall)) {
+
+                    break;
+
+                }
+
             }
+
+            if (Integer.parseInt(hall) == 5 || Integer.parseInt(hall) == 6 || Integer.parseInt(hall) == 7
+                    || Integer.parseInt(hall) == 8) {
+
+                for (int i = 0; i < 5; i++) {
+                    for (int j = 0; j < 12; j++) {
+                        if (j == 2 || j == 3 || j == 8 || j == 9) {
+                            continue;
+                        }
+
+                        Button b = new Button(seatSet.getString("SEAT_NUMBER"));
+
+                        if (seatSet.getString("SEAT_STATUS").equals("X")) {
+
+                            b.setText("X");
+
+                            b.setDisable(true);
+                        }
+                        b.getStyleClass().add("buttonSeat-x");
+
+                        seatSet.next();
+
+                        b.setPrefWidth(50);
+                        grid.add(b, j, i, 2, 1);
+
+                        // System.out.println(grid.);
+                        b.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> collectLabel(e, confirm));
+
+                    }
+
+                }
+                // System.out.println(grid.getChildren().);
+            } else {
+                for (int i = 0; i < 8; i++) {
+                    for (int j = 0; j < 18; j++) {
+                        if (j == 2 || j == 3 || j == 14 || j == 15) {
+                            continue;
+                        }
+
+                        Button b = new Button(seatSet.getString("SEAT_NUMBER"));
+
+                        if (seatSet.getString("SEAT_STATUS").equals("X")) {
+
+                            b.setText("X");
+
+                            b.setDisable(true);
+                        }
+
+                        seatSet.next();
+                        b.getStyleClass().add("buttonSeat-x");
+                        b.setPrefWidth(50);
+                        grid.add(b, j, i, 2, 1);
+                        b.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> collectLabel(e, confirm));
+
+                    }
+                }
+            }
+        } catch (SQLException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
         }
 
         confirm.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> contoller.selectRoot(e, 4));
         // label.setStyle("-fx-background-color: #fdcf00;");
 
-        seat.setPrefHeight(40);
+        seatLabel.setPrefHeight(40);
 
         price.setStyle("-fx-font-size: 24px");
 
@@ -64,7 +174,7 @@ public class seat {
 
         // pane.getChildren().add(screen);
         pane.getChildren().add(grid);
-        pane.getChildren().add(seat);
+        pane.getChildren().add(seatLabel);
         pane.getChildren().add(price);
         pane.getChildren().add(confirm);
 
@@ -88,6 +198,13 @@ public class seat {
     private String updateText = "";
     private Integer priceTotal = 0;
     private int totalSeat = 0;
+
+    private void test(MouseEvent e, MouseEvent e1) {
+
+        System.out.println(e.getSource());
+        System.out.println(e1.getSource());
+
+    }
 
     private void collectLabel(MouseEvent e, Button confirm) {
 

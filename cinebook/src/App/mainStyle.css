@@ -62,8 +62,8 @@
 }
 
 .datePanePremium {
-  background-color: #AA336A;
-  -fx-background-color: #AA336A;
+  background-color: #aa336a;
+  -fx-background-color: #aa336a;
   -fx-border-color: rgb(201, 172, 9);
   -fx-border-width: 10px;
   -fx-alignment: center;
@@ -76,11 +76,16 @@
 }
 
 .buttonSeat-x {
-  -fx-background-color: pink;
+  -fx-background-color: rgb(46, 161, 35);
   -fx-font-size: 15px;
 }
 .buttonSeat-v {
   -fx-background-color: #fdcf00;
+  -fx-font-size: 15px;
+}
+
+.buttonSeatCancel {
+  -fx-background-color: #1f1f1f;
   -fx-font-size: 15px;
 }
 

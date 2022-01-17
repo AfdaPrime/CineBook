@@ -51,15 +51,15 @@ public class dateSelector {
 
             ResultSet date = db1.date(movieName);
 
-//            while (date.next()) {
-//
-//                if (date.getString("MOVIES_NAME").equals(movieName)) {
-//
-//                    System.out.println(date.getString("MOVIES_NAME"));
-//                    System.out.println(date.getString("BRANCH"));
-//                    System.out.println(date.getString("TIME"));
-//                }
-//            }
+            // while (date.next()) {
+            //
+            // if (date.getString("MOVIES_NAME").equals(movieName)) {
+            //
+            // System.out.println(date.getString("MOVIES_NAME"));
+            // System.out.println(date.getString("BRANCH"));
+            // System.out.println(date.getString("TIME"));
+            // }
+            // }
             HashSet<String> day = new HashSet<>();
             HashSet<String> branch = new HashSet<>();
 
@@ -75,15 +75,14 @@ public class dateSelector {
 
             Object[] movieDate = day.toArray();
 
-            //for day
+            // for day
             Integer dateId = 0;
             for (String i : day) {
 
-                System.out.println(i);
-
                 Button button = new Button(i);
                 button.setId(dateId.toString());
-                button.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> changeLabel(e, date, movieName, movieDate, branch));
+                button.addEventHandler(MouseEvent.MOUSE_PRESSED,
+                        e -> changeLabel(e, date, movieName, movieDate, branch));
 
                 hbox.getChildren().add(button);
                 dateId++;
@@ -97,10 +96,8 @@ public class dateSelector {
 
             vPane.getChildren().add(hbox);
 
-            //for location
+            // for location
             for (String b : branch) {
-
-                System.out.println(b);
 
                 TitledPane titlePane = new TitledPane();
                 GridPane datePane = createdatePane(date, movieName, movieDate[0], b);
@@ -112,12 +109,12 @@ public class dateSelector {
 
             }
 
-//            for (int i = 0; i < 5; i++) {
-//
-//                
-//
-//            }
-         
+            // for (int i = 0; i < 5; i++) {
+            //
+            //
+            //
+            // }
+
         } catch (SQLException ex) {
             Logger.getLogger(dateSelector.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -125,16 +122,14 @@ public class dateSelector {
         return vPane;
     }
 
-    private void changeLabel(MouseEvent e, ResultSet date, String movieName, Object[] movieDate, HashSet<String> branch) {
+    private void changeLabel(MouseEvent e, ResultSet date, String movieName, Object[] movieDate,
+            HashSet<String> branch) {
 
         Button source = (Button) e.getSource();
-        System.out.println(source.getId());
 
         int place = 1;
 
         for (String b : branch) {
-
-            System.out.println(b);
 
             TitledPane titlePane = new TitledPane();
             GridPane datePane = createdatePane(date, movieName, movieDate[Integer.parseInt(source.getId())], b);
@@ -162,11 +157,12 @@ public class dateSelector {
             datePane.setAlignment(Pos.CENTER);
             FlowPane flowPane = new FlowPane();
 
-            //for time/hall
+            // for time/hall
             date.first();
             while (date.next()) {
 
-                if (date.getString("MOVIES_NAME").equals(movieName) && date.getString("BRANCH").equals(branch) && date.getString("DATE").equals(day.toString())) {
+                if (date.getString("MOVIES_NAME").equals(movieName) && date.getString("BRANCH").equals(branch)
+                        && date.getString("DATE").equals(day.toString())) {
                     Pane pane = new Pane();
                     String timeText = date.getString("TIME");
                     Label time = new Label(timeText);
@@ -191,32 +187,34 @@ public class dateSelector {
                     pane.setPrefWidth(200);
                     pane.setPrefHeight(200);
 
-                    pane.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> misc(e,date,timeText,hallText,movieName,branch,day));
+                    pane.addEventHandler(MouseEvent.MOUSE_PRESSED,
+                            e -> misc(e, date, timeText, hallText, movieName, branch, day));
 
                     flowPane.getChildren().add(pane);
                 }
 
             }
 
-//            FlowPane flowPane = new FlowPane();
-//            for (int j = 0; j < 10; j++) {
-//                Pane pane = new Pane();
-//                Label label = new Label("2/12");
-//
-//                label.getStyleClass().add("dateLabel");
-//                label.layoutXProperty().bind(pane.widthProperty().subtract(label.widthProperty()).divide(2));
-//                label.layoutYProperty().bind(pane.heightProperty().subtract(label.heightProperty()).divide(2));
-//
-//                pane.getChildren().add(label);
-//
-//                pane.getStyleClass().add("datePane");
-//                pane.setPrefWidth(200);
-//                pane.setPrefHeight(200);
-//
-//                pane.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> contoller.selectRoot(e, 3));
-//
-//                flowPane.getChildren().add(pane);
-//            }
+            // FlowPane flowPane = new FlowPane();
+            // for (int j = 0; j < 10; j++) {
+            // Pane pane = new Pane();
+            // Label label = new Label("2/12");
+            //
+            // label.getStyleClass().add("dateLabel");
+            // label.layoutXProperty().bind(pane.widthProperty().subtract(label.widthProperty()).divide(2));
+            // label.layoutYProperty().bind(pane.heightProperty().subtract(label.heightProperty()).divide(2));
+            //
+            // pane.getChildren().add(label);
+            //
+            // pane.getStyleClass().add("datePane");
+            // pane.setPrefWidth(200);
+            // pane.setPrefHeight(200);
+            //
+            // pane.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> contoller.selectRoot(e,
+            // 3));
+            //
+            // flowPane.getChildren().add(pane);
+            // }
             flowPane.getStyleClass().add("bg-1");
 
             flowPane.prefWidthProperty().bind(datePane.widthProperty());
@@ -228,20 +226,21 @@ public class dateSelector {
         }
         return datePane;
     }
-    
-    private void misc(MouseEvent e,ResultSet date,String time,String hall,String movieName,String branch,Object day){
-        
+
+    private void misc(MouseEvent e, ResultSet date, String time, String hall, String movieName, String branch,
+            Object day) {
+
         try {
             date.close();
-            SendEmail email = new SendEmail();
-            
-            email.setMovie(day.toString(),movieName,time,branch,hall);
-            
+
+            seat.setSeatSelection(movieName, hall, branch);
+            SendEmail.setMovie(day.toString(), movieName, time, branch, hall);
+
             contoller.selectRoot(e, 3);
         } catch (SQLException ex) {
             Logger.getLogger(dateSelector.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
 }
