@@ -50,7 +50,7 @@ public class dataBase {
         return rs;
     }
 
-    public ResultSet date(String NAME) {
+    public ResultSet date() {
 
         this.SQL += ".MOVIES_BRANCH_AND_TIME ";
 

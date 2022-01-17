@@ -3,14 +3,19 @@ package App;
 import Database.dataBase;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -72,6 +77,7 @@ public class topBar {
             }
         }
 
+        staffButton.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> staff(e));
         logOut.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> logOut(e));
         arrow.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> misc(e, i));
 
@@ -123,8 +129,21 @@ public class topBar {
             currentStage.close();
             login.start(stage);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
+        }
+
+    }
+
+    private void staff(MouseEvent event) {
+
+        try {
+            Login login = new Login();
+            
+            
+            login.getFXMLLoader();
+        } catch (IOException ex) {
+            Logger.getLogger(topBar.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

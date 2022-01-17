@@ -31,34 +31,41 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <TextField fx:id="movie" layoutX="202.0" layoutY="105.0" onAction="#movieField" promptText="Movie" />
-            <TextField fx:id="showtime" layoutX="203.0" layoutY="139.0" onAction="#timeField" promptText="Showtime" />
-            <Label fx:id="movielabel" layoutX="45.0" layoutY="104.0" text="Movie Name">
+            <TextField fx:id="movie" layoutX="203.0" layoutY="86.0" promptText="Movie" />
+            <TextField fx:id="showtime" layoutX="204.0" layoutY="120.0" promptText="Showtime" />
+            <Label fx:id="movielabel" layoutX="46.0" layoutY="85.0" text="Movie Name">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="showtimelabel" layoutX="45.0" layoutY="138.0" text="Movie Showtime">
+            <Label fx:id="showtimelabel" layoutX="46.0" layoutY="119.0" text="Movie Showtime">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="45.0" layoutY="310.0" mnemonicParsing="false" onAction="#removeButton" style="-fx-background-color: teal;" text="Remove" textFill="WHITE" />
-            <Button layoutX="314.0" layoutY="310.0" mnemonicParsing="false" onAction="#addButton" style="-fx-background-color: teal;" text="Add" textFill="WHITE" />
-            <TextField fx:id="hall" layoutX="203.0" layoutY="174.0" onAction="#timeField" promptText="Hall" />
-            <Label fx:id="showtimelabel1" layoutX="45.0" layoutY="173.0" text="Movie Hall">
+            <Button layoutX="45.0" layoutY="323.0" mnemonicParsing="false" onAction="#removeButton" style="-fx-background-color: teal;" text="Remove" textFill="WHITE" />
+            <Button layoutX="314.0" layoutY="323.0" mnemonicParsing="false" onAction="#addButton" style="-fx-background-color: teal;" text="Add" textFill="WHITE" />
+            <TextField fx:id="hall" layoutX="204.0" layoutY="155.0" promptText="Hall" />
+            <Label fx:id="showtimelabel1" layoutX="46.0" layoutY="154.0" text="Movie Hall">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="date" layoutX="203.0" layoutY="208.0" onAction="#timeField" promptText="Date" />
-            <Label fx:id="showtimelabel11" layoutX="45.0" layoutY="207.0" text="Date">
+            <TextField fx:id="date" layoutX="204.0" layoutY="189.0" promptText="Date" />
+            <Label fx:id="showtimelabel11" layoutX="46.0" layoutY="188.0" text="Date">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="branch" layoutX="203.0" layoutY="241.0" onAction="#timeField" promptText="Branch" />
-            <Label fx:id="showtimelabel111" layoutX="45.0" layoutY="240.0" text="Branch">
+            <TextField fx:id="branch" layoutX="204.0" layoutY="264.0" promptText="Branch" />
+            <Label fx:id="showtimelabel111" layoutX="46.0" layoutY="263.0" text="Branch">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="statusLabel" layoutX="45.0" layoutY="276.0" prefHeight="30.0" prefWidth="309.0" />
+            <TextField fx:id="day" layoutX="204.0" layoutY="228.0" promptText="Day" />
+            <Label fx:id="showtimelabel112" layoutX="46.0" layoutY="227.0" text="Day">
                <font>
                   <Font size="18.0" />
                </font>

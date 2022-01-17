@@ -76,14 +76,15 @@ public class StaffLoginController implements Initializable {
 
             while (staff.next()) {
 
-                if (staff.getString("USERNAME").equals(username) && staff.getString("PASSWORD").equals(password) && staff.getString("STAFF_ID").equals(staffId)) {
+                if (staff.getString("USERNAME").equals(username) && staff.getString("PASSWORD").equals(password)
+                        && staff.getString("STAFF_ID").equals(staffId)) {
 
                     try {
                         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         App.Main main = new Main();
-            
+
                         Main.staff = true;
-                        
+
                         db.close();
                         stage.close();
                         main.start();
@@ -109,7 +110,6 @@ public class StaffLoginController implements Initializable {
                 }
 
             }
-            staff.first();
 
         } catch (SQLException ex) {
             Logger.getLogger(LoginFXMLController.class.getName()).log(Level.SEVERE, null, ex);

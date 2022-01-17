@@ -1,5 +1,7 @@
 package loginandsignup;
 
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,6 +22,17 @@ public class Login extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public void getFXMLLoader() throws IOException {
+
+        Parent root = FXMLLoader.load(getClass().getResource("StaffMovie.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setTitle("Add Movie Time");
+        stage.setScene(scene);
+        stage.show();
+
     }
 
 }

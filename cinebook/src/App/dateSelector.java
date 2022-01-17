@@ -49,7 +49,7 @@ public class dateSelector {
 
             dataBase db1 = new dataBase();
 
-            ResultSet date = db1.date(movieName);
+            ResultSet date = db1.date();
 
             // while (date.next()) {
             //
