@@ -224,7 +224,7 @@ We used java.mail properties to connect with gmail server for password and email
 
 ![image4](https://github.com/AfdaPrime/CineBook/blob/f48a9e8a69936f806b95fdf38a016dd8767e9512/Assignment%20FOP%20Flowchart.drawio.png)
 
-
+## Sample Output
 
 # Managerial Report
 **1.	The formation of the team**
