@@ -18,21 +18,23 @@ public class Main {
     static Scene scene = new Scene(root, Color.BLACK);
     static VBox box = new VBox();
     static ScrollPane sPane = new ScrollPane();
-    
-    topBar topBar = new App.topBar();
 
-    picker picker = new App.picker();
+    topBar topBar = new App.topBar();
 
     public static boolean staff = false;
 
     public void start() {
 
-        
-        
         Stage stage = new Stage();
 
         stage.setMaximized(true);
-        box.getChildren().add(picker.placeHolder());
+
+        if (box.getChildren().isEmpty()) {
+
+            box.getChildren().add(new picker().placeHolder());
+        } else {
+            box.getChildren().set(0, new picker().placeHolder());
+        }
 
         sPane.setContent(box);
 
@@ -40,7 +42,17 @@ public class Main {
         sPane.setFitToHeight(true);
 
         box.getStyleClass().add("bg-3");
-        root.getChildren().addAll(topBar.bar(0, staff), sPane);
+
+        if (root.getChildren().isEmpty()) {
+
+            root.getChildren().addAll(topBar.bar(0, staff), sPane);
+            System.out.println(root.getChildren().size());
+        } else {
+
+            root.getChildren().set(0, topBar.bar(0, staff));
+            root.getChildren().set(1, sPane);
+
+        }
 
         scene.getStylesheets().add(getClass().getResource("mainStyle.css").toExternalForm());
         root.prefWidthProperty().bind(stage.widthProperty());

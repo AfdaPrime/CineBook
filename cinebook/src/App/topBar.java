@@ -21,6 +21,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+import loginandsignup.Login;
 
 public class topBar {
     private Group group = new Group();
@@ -70,7 +72,7 @@ public class topBar {
             }
         }
 
-        logOut.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> misc(e, i));
+        logOut.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> logOut(e));
         arrow.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> misc(e, i));
 
         anchor.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
@@ -108,6 +110,23 @@ public class topBar {
             e.printStackTrace();
         }
         return imageView;
+    }
+
+    private void logOut(MouseEvent event) {
+
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = new Stage();
+
+        Login login = new Login();
+
+        try {
+            currentStage.close();
+            login.start(stage);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
     }
 
 }
