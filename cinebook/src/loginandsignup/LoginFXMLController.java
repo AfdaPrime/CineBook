@@ -4,6 +4,7 @@
  */
 package loginandsignup;
 
+import Database.dataBase;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,10 +18,15 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
-import javax.swing.JOptionPane;
 
 import App.Main;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.Node;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -28,6 +34,10 @@ import javafx.scene.Node;
  * @author Dell
  */
 public class LoginFXMLController implements Initializable {
+
+    dataBase db = new dataBase();
+
+    ResultSet customer = db.customer();
 
     @FXML
     private ImageView cinemaPicture;
@@ -41,6 +51,10 @@ public class LoginFXMLController implements Initializable {
     private Label registerpopup;
     @FXML
     private Line line;
+    @FXML
+    private TextField usernameFeild;
+    @FXML
+    private PasswordField passwordFeild;
 
     /**
      * Initializes the controller class.
@@ -61,16 +75,49 @@ public class LoginFXMLController implements Initializable {
     @FXML
     private void loginButton(ActionEvent event) {
 
-        App.Main main = new Main();
-
         try {
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-            // stage.setMaximized(true);
-            stage.close();
-            main.start();
-        } catch (Exception e) {
-            e.printStackTrace();
+            String username = this.usernameFeild.getText();
+            String password = this.passwordFeild.getText();
+
+            customer.previous();
+            
+            while (customer.next()) {
+
+                if (customer.getString("USERNAME").equals(username) && customer.getString("PASSWORD").equals(password)) {
+
+                    try {
+                        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        App.Main main = new Main();
+                        
+                        Main.staff = false;
+                        
+                        stage.close();
+                        main.start();
+                        db.close();
+                        break;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                } else {
+
+                    usernameFeild.setText("");
+                    passwordFeild.setText("");
+
+                    usernameFeild.setStyle("-fx-border-color: red;");
+                    passwordFeild.setStyle("-fx-border-color: red;");
+
+                    usernameFeild.setPromptText("PLEASE ENTER AGAIN");
+                    passwordFeild.setPromptText("PLEASE ENTER AGAIN");
+
+                }
+
+            }
+            
+
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

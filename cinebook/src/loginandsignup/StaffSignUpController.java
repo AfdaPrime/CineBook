@@ -4,9 +4,16 @@
  */
 package loginandsignup;
 
+import App.Main;
+import Database.dataBase;
 import java.io.IOException;
+import static java.lang.Double.NaN;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +25,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import javafx.scene.Node;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -25,6 +34,10 @@ import javafx.scene.Node;
  * @author Dell
  */
 public class StaffSignUpController implements Initializable {
+
+    dataBase db = new dataBase();
+
+    ResultSet staff = db.staff();
 
     @FXML
     private ImageView image;
@@ -34,6 +47,18 @@ public class StaffSignUpController implements Initializable {
     private Label staffIDLabel;
     @FXML
     private Label staffPasswordLabel;
+    @FXML
+    private TextField staffId;
+    @FXML
+    private TextField username;
+    @FXML
+    private TextField name;
+    @FXML
+    private TextField email;
+    @FXML
+    private TextField phoneNum;
+    @FXML
+    private PasswordField password;
 
     /**
      * Initializes the controller class.
@@ -53,6 +78,72 @@ public class StaffSignUpController implements Initializable {
 
     @FXML
     private void staffSignUpButton(ActionEvent event) {
+
+        try {
+
+            if (staffId.getText().trim().isEmpty() || username.getText().trim().isEmpty() || name.getText().trim().isEmpty() || email.getText().trim().isEmpty() || phoneNum.getText().trim().isEmpty() || password.getText().trim().isEmpty()) {
+
+                staffId.setText("");
+                username.setText("");
+                name.setText("");
+                email.setText("");
+                phoneNum.setText("");
+                password.setText("");
+
+                staffId.setStyle("-fx-border-color: red;");
+                username.setStyle("-fx-border-color: red;");
+                name.setStyle("-fx-border-color: red;");
+                email.setStyle("-fx-border-color: red;");
+                phoneNum.setStyle("-fx-border-color: red;");
+                password.setStyle("-fx-border-color: red;");
+
+                staffId.setPromptText("PLEASE ENTER AGAIN");
+                username.setPromptText("PLEASE ENTER AGAIN");
+                name.setPromptText("PLEASE ENTER AGAIN");
+                email.setPromptText("PLEASE ENTER AGAIN");
+                phoneNum.setPromptText("PLEASE ENTER AGAIN");
+                password.setPromptText("PLEASE ENTER AGAIN");
+            } else {
+
+                if (!staffId.getText().matches("\\d*")) {
+
+                    staffId.setText("");
+                    staffId.setStyle("-fx-border-color: red;");
+                    staffId.setPromptText("PLEASE ENTER NUMBER");
+
+                } else {
+
+                    staff.moveToInsertRow();
+                    staff.updateString("STAFF_ID", staffId.getText());
+                    staff.updateString("USERNAME", username.getText());
+                    staff.updateString("FULL_NAME", name.getText());
+                    staff.updateString("EMAIL", email.getText());
+                    staff.updateString("PHONE_NUMBER", phoneNum.getText());
+                    staff.updateString("PASSWORD", password.getText());
+
+                    //Inserts a new row
+                    staff.insertRow();
+
+                    try {
+                        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        App.Main main = new Main();
+
+                        Main.staff = true;
+
+                        stage.close();
+                        main.start();
+                        db.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SignUpFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     @FXML

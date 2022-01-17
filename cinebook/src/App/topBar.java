@@ -34,9 +34,7 @@ public class topBar {
     private Button staffButton = new Button("Staff");
 
     public Parent bar(int i, boolean staff) {
-        
-  
-        
+
         text.setText("GSC");
 
         ImageView gsc = createImageView(
@@ -72,6 +70,7 @@ public class topBar {
             }
         }
 
+        logOut.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> misc(e, i));
         arrow.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> misc(e, i));
 
         anchor.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);

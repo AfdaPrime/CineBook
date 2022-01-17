@@ -1,5 +1,6 @@
 package App;
 
+import Database.dataBase;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -17,15 +18,17 @@ public class Main {
     static Scene scene = new Scene(root, Color.BLACK);
     static VBox box = new VBox();
     static ScrollPane sPane = new ScrollPane();
-
+    
     topBar topBar = new App.topBar();
 
     picker picker = new App.picker();
 
-    static boolean staff = true;
+    public static boolean staff = false;
 
     public void start() {
 
+        
+        
         Stage stage = new Stage();
 
         stage.setMaximized(true);

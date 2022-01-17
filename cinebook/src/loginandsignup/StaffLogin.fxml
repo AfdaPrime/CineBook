@@ -31,23 +31,29 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label fx:id="staffIDLabel" layoutX="48.0" layoutY="108.0" text="Staff ID">
+            <Label fx:id="staffIDLabel" layoutX="50.0" layoutY="169.0" text="Staff ID">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="staffpasswordLabel" layoutX="48.0" layoutY="151.0" text="Password">
+            <Label fx:id="staffpasswordLabel" layoutX="50.0" layoutY="212.0" text="Password">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="newStaffLabel" layoutX="26.0" layoutY="240.0" text="Create new staff account" />
-            <TextField fx:id="staffIDField" layoutX="178.0" layoutY="109.0" promptText="Staff ID" />
-            <PasswordField fx:id="staffpasswordFIeld" layoutX="178.0" layoutY="152.0" promptText="Password" />
-            <Button layoutX="283.0" layoutY="188.0" mnemonicParsing="false" onAction="#staffLoginButton" style="-fx-background-color: teal;" text="Login" textFill="WHITE" />
-            <Button layoutX="26.0" layoutY="258.0" mnemonicParsing="false" onAction="#staffGoSignUpButton" style="-fx-background-color: teal;" text="Sign Up" textFill="WHITE" />
+            <Label fx:id="newStaffLabel" layoutX="197.0" layoutY="295.0" text="Create new staff account" />
+            <TextField fx:id="staffIDField" layoutX="180.0" layoutY="170.0" promptText="Staff ID" />
+            <PasswordField fx:id="staffpasswordFIeld" layoutX="180.0" layoutY="213.0" promptText="Password" />
+            <Button layoutX="285.0" layoutY="249.0" mnemonicParsing="false" onAction="#staffLoginButton" style="-fx-background-color: teal;" text="Login" textFill="WHITE" />
+            <Button layoutX="265.0" layoutY="313.0" mnemonicParsing="false" onAction="#staffGoSignUpButton" style="-fx-background-color: teal;" text="Sign Up" textFill="WHITE" />
             <Line fx:id="line" endX="-35.999977111816406" endY="246.79998779296875" layoutX="36.0" layoutY="154.0" startX="-36.400001525878906" startY="-154.0" />
-            <Button layoutX="280.0" layoutY="318.0" mnemonicParsing="false" onAction="#staffreturnLoginButton" style="-fx-background-color: teal;" text="Return" textFill="WHITE" />
+            <Button layoutX="51.0" layoutY="313.0" mnemonicParsing="false" onAction="#staffreturnLoginButton" style="-fx-background-color: teal;" text="Return" textFill="WHITE" />
+            <Label fx:id="staffUsernameLabel" layoutX="50.0" layoutY="128.0" text="Username">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="staffUsernameTextfeild" layoutX="180.0" layoutY="129.0" promptText="Username" />
          </children>
       </AnchorPane>
    </right>

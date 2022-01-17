@@ -36,8 +36,8 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField layoutX="161.0" layoutY="133.0" onAction="#loginUsernameInput" promptText="Username" />
-            <PasswordField layoutX="161.0" layoutY="194.0" onAction="#loginPasswordInput" promptText="Password" />
+            <TextField fx:id="usernameFeild" layoutX="161.0" layoutY="133.0" onAction="#loginUsernameInput" promptText="Username" />
+            <PasswordField fx:id="passwordFeild" layoutX="161.0" layoutY="194.0" onAction="#loginPasswordInput" promptText="Password" />
             <Label fx:id="cinemaName" layoutX="127.0" layoutY="38.0" text="GSC Cinema">
                <font>
                   <Font size="24.0" />
@@ -47,7 +47,7 @@
             <Button layoutX="70.0" layoutY="271.0" mnemonicParsing="false" onAction="#gotoSignUp" style="-fx-background-color: teal;" text="Sign up" textFill="WHITE" />
             <Label fx:id="registerpopup" layoutX="19.0" layoutY="249.0" text="Don't have an account? Register below" />
             <Line fx:id="line" endY="400.79998779296875" startY="0.7999969720840454" />
-            <Button layoutX="295.0" layoutY="362.0" mnemonicParsing="false" onAction="#staffButton" style="-fx-background-color: teal;" text="Staff" textFill="WHITE" />
+            <Button layoutX="294.0" layoutY="333.0" mnemonicParsing="false" onAction="#staffButton" style="-fx-background-color: teal;" text="Staff" textFill="WHITE" />
          </children>
       </AnchorPane>
    </right>

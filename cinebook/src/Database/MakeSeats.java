@@ -19,31 +19,34 @@ public class MakeSeats {
         
         try {
             
-            int i, j, hall = 1;
+            int i, j, hall = 5;
             String seat = "";
             char index=65;
-        
-            String SQL = "SELECT * FROM HALL_SEATS";
-            String host = "jdbc:derby://localhost:1527/CinemaBooking_Database";
-            String uName = "WIX1002_OCC5_02";
-            String uPass = "siapaapplesebenarnya";
-        
+            
+            String SQL = "SELECT * FROM APPLE.HALL_SEAT_STATUS";
+            String host = "jdbc:derby://localhost:1527/CinemaBookingDatabase";
+            String uName = "Apple";
+            String uPass = "SiapakahAppleSebenarnya_69";
+            
             //Set up a connection to the database
             Connection con = DriverManager.getConnection(host, uName, uPass);
+            
             Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            
             ResultSet rs = stmt.executeQuery(SQL);
             
-            while(hall <= 2)
+            while(hall <= 8)
             {
-                while (index>64 && index<77)
+                while (index>64 && index<70)
                 {
                     // Move the cursor to the new row
                     rs.moveToInsertRow();
-                    for(i=1; i<=18; i++)
+                    for(i=1; i<=8; i++)
                     {
                         seat = seat + index + i;
                         
-                        rs.updateInt("Hall", hall);
+                        rs.updateString("Branch", "Petaling Jaya - 1 Utama");
+                        rs.updateInt("Hall_Number", hall);
                         rs.updateString("Seat_Number", seat);
                         rs.updateString("Seat_Status", "O");
                         
