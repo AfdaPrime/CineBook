@@ -43,7 +43,7 @@ Our team consists of five members, leader is Iwan Bin Amri and members are Muham
 
 **3. Project Timeline**
 
-gantt chart here
+![Gantt Chart](https://github.com/AfdaPrime/CineBook/blob/main/gantt.png)
 
 **4.	Problems and Solutions**
 Problems Faced during the project
