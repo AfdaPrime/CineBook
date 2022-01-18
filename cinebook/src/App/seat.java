@@ -189,6 +189,10 @@ public class seat {
 
     private void collectLabel(MouseEvent e, Button confirm, String state) {
 
+        dataBase dbMovie = new dataBase();
+
+        ResultSet movieset = dbMovie.movie();
+
         int priceInfo = 0;
 
         Label seat = new Label();
@@ -204,21 +208,34 @@ public class seat {
         seat.setPrefHeight(40);
 
         price.setStyle("-fx-font-size: 24px;-fx-text-fill: white");
+        try {
 
-        if (state.equals("premium")) {
+            while (movieset.next()) {
 
-            priceInfo = 100;
+                if (movieset.getString("MOVIES_NAME").equals(movie)) {
+                    break;
+                }
 
-        } else {
-
-            if (name != null) {
-                priceInfo = 11;
-            } else {
-                priceInfo = 14;
             }
 
-        }
+            if (state.equals("premium")) {
 
+                priceInfo = movieset.getInt("PRICE_PREMIUM");
+
+            } else {
+
+                if (name != null) {
+                    priceInfo = movieset.getInt("PRICE_STUDENT");
+                } else {
+                    priceInfo = movieset.getInt("PRICE_CLASSIC");
+                }
+
+            }
+            dbMovie.close();
+        } catch (NumberFormatException | SQLException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
         // change button colour when press
         if (b.getStyleClass().toString().equals("button buttonSeat-x")) {
             b.getStyleClass().set(1, "buttonSeat-v");
