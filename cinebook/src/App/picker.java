@@ -32,6 +32,8 @@ public class picker {
             dataBase db = new dataBase();
 
             ResultSet movie = db.movie();
+
+            topBar.db = db;
             // flow.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
             flow.getStyleClass().add("bg-1");
             Integer i = 0;

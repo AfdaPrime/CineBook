@@ -85,6 +85,8 @@ public class Payment {
 
         ResultSet movieSet = db.movie();
 
+        topBar.db = db;
+
         System.out.println(name);
 
         try {

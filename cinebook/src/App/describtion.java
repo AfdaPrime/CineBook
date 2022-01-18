@@ -102,6 +102,8 @@ public class describtion {
 
         dataBase db = new dataBase();
 
+        topBar.db = db;
+
         try (ResultSet movie = db.movie()) {
 
             System.out.println(movie.absolute(id + 1));

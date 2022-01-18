@@ -86,10 +86,11 @@ public class SignUpFXMLController implements Initializable {
 
     @FXML
     private void signInButton(ActionEvent event) {
-                       
+
         try {
 
-            if (usernameField.getText().trim().isEmpty() || passwordField.getText().trim().isEmpty() || namelField.getText().trim().isEmpty() || phoneField.getText().trim().isEmpty()) {
+            if (usernameField.getText().trim().isEmpty() || passwordField.getText().trim().isEmpty()
+                    || namelField.getText().trim().isEmpty() || phoneField.getText().trim().isEmpty()) {
 
                 usernameField.setText("");
                 passwordField.setText("");
@@ -109,53 +110,48 @@ public class SignUpFXMLController implements Initializable {
                 phoneField.setPromptText("PLEASE ENTER AGAIN");
                 emailField.setPromptText("PLEASE ENTER AGAIN");
             } else {
-                
-               
-                   customer.moveToInsertRow();
-                
+
+                customer.moveToInsertRow();
+
                 customer.updateString("USERNAME", usernameField.getText());
                 customer.updateString("PASSWORD", passwordField.getText());
                 customer.updateString("FULL_NAME", namelField.getText());
                 customer.updateString("PHONE_NUMBER", phoneField.getText());
                 customer.updateString("EMAIL", emailField.getText());
-                
-                 if (matrixNumberField.isDisable()) {
 
-                customer.updateString("MATRIC_NUMBER", null);
+                if (matrixNumberField.isDisable()) {
 
-            } else {
-                if (matrixNumberField.getText().trim().isEmpty()) {
-                     matrixNumberField.setText("");
-                    matrixNumberField.setStyle("-fx-border-color: red;");
-                    matrixNumberField.setPromptText("PLEASE ENTER AGAIN");
-                }else{
-                    customer.updateString("MATRIC_NUMBER", matrixNumberField.getText());
-                   
-                }
-            }
+                    customer.updateString("MATRIC_NUMBER", null);
 
-                 
-            //Inserts a new row
-            customer.insertRow();
-            
-            
-             try {
-                        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                        App.Main main = new Main();
-                        
-                        Main.staff = false;
-                        
-                        stage.close();
-                        main.start();
-                        db.close();
-                  
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                } else {
+                    if (matrixNumberField.getText().trim().isEmpty()) {
+                        matrixNumberField.setText("");
+                        matrixNumberField.setStyle("-fx-border-color: red;");
+                        matrixNumberField.setPromptText("PLEASE ENTER AGAIN");
+                    } else {
+                        customer.updateString("MATRIC_NUMBER", matrixNumberField.getText());
+
                     }
-                
-            }
+                }
 
-           
+                // Inserts a new row
+                customer.insertRow();
+
+                try {
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    App.Main main = new Main();
+
+                    Main.staff = false;
+
+                    stage.close();
+                    main.start();
+                    db.close();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
 
             db.close();
         } catch (SQLException ex) {

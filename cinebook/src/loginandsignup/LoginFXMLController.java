@@ -117,6 +117,7 @@ public class LoginFXMLController implements Initializable {
                     usernameFeild.setPromptText("PLEASE ENTER AGAIN");
                     passwordFeild.setPromptText("PLEASE ENTER AGAIN");
 
+                    break;
                 }
 
             }

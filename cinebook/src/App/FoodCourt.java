@@ -29,6 +29,8 @@ public class FoodCourt {
 
         ResultSet food = db.food();
 
+        topBar.db = db;
+
         FlowPane flow = new FlowPane();
         int i = 0;
         try {

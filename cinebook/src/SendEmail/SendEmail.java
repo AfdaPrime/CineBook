@@ -30,6 +30,7 @@ import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 
+import App.topBar;
 import Database.dataBase;
 import javafx.scene.control.Button;
 
@@ -170,6 +171,8 @@ public class SendEmail {
             dataBase db = new dataBase();
 
             ResultSet seatSet = db.seat();
+
+            topBar.db = db;
 
             String[] args = seatPlace.split("   ");
 

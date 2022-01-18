@@ -40,6 +40,8 @@ public class topBar {
     private Button logOut = new Button("Log Out");
     private Button staffButton = new Button("Staff");
 
+    public static dataBase db = null;
+
     public Parent bar(int i, boolean staff) {
 
         text.setText("GSC");
@@ -89,6 +91,7 @@ public class topBar {
 
     private void misc(MouseEvent e, int i) {
 
+        db.close();
         Payment.setType();
 
         if (i == 6) {
@@ -139,8 +142,7 @@ public class topBar {
 
         try {
             Login login = new Login();
-            
-            
+
             login.getFXMLLoader();
         } catch (IOException ex) {
             Logger.getLogger(topBar.class.getName()).log(Level.SEVERE, null, ex);

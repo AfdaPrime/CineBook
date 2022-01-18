@@ -36,6 +36,8 @@ public class dateSelector {
 
             ResultSet movie = db.movie();
 
+            topBar.db = db;
+
             movie.absolute(id + 1);
 
             String movieName = movie.getString("MOVIES_NAME");

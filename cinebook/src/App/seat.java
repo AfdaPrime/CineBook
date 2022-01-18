@@ -62,6 +62,8 @@ public class seat {
 
         ResultSet seatSet = db.seat();
 
+        topBar.db = db;
+
         // seat
         try {
 

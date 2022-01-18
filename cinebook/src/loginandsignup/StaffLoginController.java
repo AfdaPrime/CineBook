@@ -107,6 +107,7 @@ public class StaffLoginController implements Initializable {
                     staffIDField.setPromptText("PLEASE ENTER AGAIN");
                     staffpasswordFIeld.setPromptText("PLEASE ENTER AGAIN");
 
+                    break;
                 }
 
             }
