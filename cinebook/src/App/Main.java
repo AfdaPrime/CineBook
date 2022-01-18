@@ -1,10 +1,8 @@
 package App;
 
-import Database.dataBase;
-import javafx.application.Application;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -26,6 +24,9 @@ public class Main {
     public void start() {
 
         Stage stage = new Stage();
+
+        stage.getIcons().add(new Image(
+                "file:D:/newCode/university/FundamentalOfProgramming/assigment/CineBook/cinebook/src/loginandsignup/gsc_logo-3.jpg"));
 
         stage.setMaximized(true);
 

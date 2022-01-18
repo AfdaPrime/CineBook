@@ -64,39 +64,6 @@ public class seat {
 
         // seat
         try {
-            // while (seatSet.next()) {
-
-            // int i = 0;
-            // int j = 0;
-
-            // if (Integer.parseInt(hall) == 5 || Integer.parseInt(hall) == 6 ||
-            // Integer.parseInt(hall) == 7
-            // || Integer.parseInt(hall) == 8) {
-
-            // if (i == 7) {
-
-            // i = 0;
-
-            // }
-
-            // Button b = new Button(seatSet.getString("SEAT_NUMBER"));
-            // // seatSet.next();
-            // b.getStyleClass().add("buttonSeat-x");
-            // b.setPrefWidth(50);
-            // grid.add(b, i, j, 2, 1);
-            // b.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> collectLabel(e, confirm));
-
-            // } else {
-
-            // if (i == 12) {
-
-            // i = 0;
-
-            // }
-
-            // }
-
-            // }
 
             while (seatSet.next()) {
 
@@ -122,6 +89,11 @@ public class seat {
                         if (seatSet.getString("SEAT_STATUS").equals("X")) {
 
                             b.setText("X");
+
+                            b.setDisable(true);
+                        } else if (seatSet.getString("SEAT_STATUS").equals("/")) {
+
+                            b.setText("/");
 
                             b.setDisable(true);
                         }
@@ -150,7 +122,14 @@ public class seat {
 
                         if (seatSet.getString("SEAT_STATUS").equals("X")) {
 
+                            b.setStyle("-fx-background-color: #fdcf00");
+
                             b.setText("X");
+
+                            b.setDisable(true);
+                        } else if (seatSet.getString("SEAT_STATUS").equals("/")) {
+                            b.setStyle("-fx-background-color: #fdcf00");
+                            b.setText("/");
 
                             b.setDisable(true);
                         }
@@ -188,7 +167,7 @@ public class seat {
         grid.setHgap(60);
         grid.setVgap(10);
 
-        grid.setStyle("-fx-background-color: red");
+        // grid.setStyle("-fx-background-color: red");
         pane.setStyle("-fx-alignment: center");
 
         pane.setSpacing(10);
@@ -206,13 +185,6 @@ public class seat {
     private Integer priceTotal = 0;
     private int totalSeat = 0;
 
-    private void test(MouseEvent e, MouseEvent e1) {
-
-        System.out.println(e.getSource());
-        System.out.println(e1.getSource());
-
-    }
-
     private void collectLabel(MouseEvent e, Button confirm, String state) {
 
         int priceInfo = 0;
@@ -224,10 +196,10 @@ public class seat {
 
         String newCode = new String();
 
-        seat.setStyle("-fx-font-size: 18px");
+        seat.setStyle("-fx-font-size: 18px;-fx-text-fill: white");
         seat.setPrefHeight(40);
 
-        price.setStyle("-fx-font-size: 24px");
+        price.setStyle("-fx-font-size: 24px;-fx-text-fill: white");
 
         if (state.equals("premium")) {
 
@@ -291,6 +263,7 @@ public class seat {
             Payment.setTicketNumber(totalSeat, "classic");
         }
         seat.setText(updateText);
+        Payment.setSeat(updateText);
         SendEmail.setSeat(updateText);
         pane.getChildren().set(1, seat);
         pane.getChildren().set(2, price);

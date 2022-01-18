@@ -7,6 +7,9 @@ package SendEmail;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.Properties;
 import java.util.Random;
 
@@ -27,6 +30,7 @@ import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 
+import Database.dataBase;
 import javafx.scene.control.Button;
 
 public class SendEmail {
@@ -40,7 +44,7 @@ public class SendEmail {
     private static String location = new String();
     private static String hall = new String();
 
-    public static void setMovie(String date,String movie,String time,String location,String hall) {
+    public static void setMovie(String date, String movie, String time, String location, String hall) {
         SendEmail.date = date;
         SendEmail.movie = movie;
         SendEmail.time = time;
@@ -152,10 +156,46 @@ public class SendEmail {
             } else {
                 System.out.println("Failed to delete the selected file");
             }
-
+            updateMovie();
             System.out.println("Sent message");
         } catch (MessagingException | IOException e) {
             e.printStackTrace();
+        }
+
+    }
+
+    private void updateMovie() {
+
+        try {
+            dataBase db = new dataBase();
+
+            ResultSet seatSet = db.seat();
+
+            String[] args = seatPlace.split("   ");
+
+            System.out.println(Arrays.toString(args));
+
+            for (int i = 0; i < args.length; i++) {
+
+                while (seatSet.next()) {
+
+                    if (seatSet.getString("HALL_NUMBER").equals(hall)
+                            && seatSet.getString("SEAT_NUMBER").equals(args[i])
+                            && seatSet.getString("BRANCH").equals(location)) {
+
+                        seatSet.updateString("SEAT_STATUS", "/");
+
+                        seatSet.updateRow();
+                        seatSet.first();
+                        break;
+                    }
+
+                }
+            }
+
+            db.close();
+        } catch (SQLException e1) {
+            e1.printStackTrace();
         }
 
     }

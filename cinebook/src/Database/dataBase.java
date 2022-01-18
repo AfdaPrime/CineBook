@@ -89,6 +89,16 @@ public class dataBase {
 
     }
 
+    public ResultSet food() {
+
+        this.SQL += ".FOOD_LIST";
+
+        this.rs = connection(SQL);
+
+        return rs;
+
+    }
+
     public void close() {
         try {
             rs.close();

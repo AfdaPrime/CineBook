@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Login extends Application {
@@ -14,6 +15,8 @@ public class Login extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("LoginFXML.fxml"));
         Scene scene = new Scene(root);
+        stage.getIcons().add(new Image(
+                "file:D:/newCode/university/FundamentalOfProgramming/assigment/CineBook/cinebook/src/loginandsignup/gsc_logo-3.jpg"));
         stage.setTitle("GSC Movie");
         stage.setScene(scene);
         stage.show();

@@ -17,13 +17,10 @@ public class contoller {
     ScrollPane sPane = new ScrollPane();
     App.topBar topBar = null;
 
-    
     private static Integer id = 0;
 
+    public void selectRoot(MouseEvent e, int i) {
 
-    public void selectRoot(MouseEvent e, int i  ) {
-
-        
         try {
 
             // root.getChildren().clear();
@@ -39,7 +36,7 @@ public class contoller {
                         this.id = Integer.parseInt(source.getId());
                         System.out.println(id);
                     }
-                    Main.root.getChildren().set(0, new topBar().bar(i, Main.staff ));
+                    Main.root.getChildren().set(0, new topBar().bar(i, Main.staff));
                     box.getChildren().add(new describtion().placeHolder(this.id));
                     break;
                 case 2:
@@ -75,11 +72,7 @@ public class contoller {
             sPane.setFitToWidth(true);
             sPane.setFitToHeight(true);
 
-            // topBar.bar().setId("heelo");
-            // root.getChildren().add(topBar.bar());
-            // root.getChildren().addAll(topBar.bar(), sPane);
             Main.root.getChildren().set(1, sPane);
-            // ((Node) e.getSource()).getScene().setRoot(Main.root);
 
         } catch (Exception error) {
             error.printStackTrace();

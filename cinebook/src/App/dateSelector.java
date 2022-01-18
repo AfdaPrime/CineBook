@@ -1,23 +1,20 @@
 package App;
 
-import Database.dataBase;
-import SendEmail.SendEmail;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import Database.dataBase;
+import SendEmail.SendEmail;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
-
 import javafx.scene.input.MouseEvent;
-
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -51,15 +48,6 @@ public class dateSelector {
 
             ResultSet date = db1.date();
 
-            // while (date.next()) {
-            //
-            // if (date.getString("MOVIES_NAME").equals(movieName)) {
-            //
-            // System.out.println(date.getString("MOVIES_NAME"));
-            // System.out.println(date.getString("BRANCH"));
-            // System.out.println(date.getString("TIME"));
-            // }
-            // }
             HashSet<String> day = new HashSet<>();
             HashSet<String> branch = new HashSet<>();
 
@@ -100,6 +88,7 @@ public class dateSelector {
             for (String b : branch) {
 
                 TitledPane titlePane = new TitledPane();
+                titlePane.setStyle("-fx-background-color: black;");
                 GridPane datePane = createdatePane(date, movieName, movieDate[0], b);
                 titlePane.setContent(datePane);
                 titlePane.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
@@ -108,12 +97,6 @@ public class dateSelector {
                 vPane.getChildren().add(titlePane);
 
             }
-
-            // for (int i = 0; i < 5; i++) {
-            //
-            //
-            //
-            // }
 
         } catch (SQLException ex) {
             Logger.getLogger(dateSelector.class.getName()).log(Level.SEVERE, null, ex);

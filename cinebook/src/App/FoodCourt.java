@@ -1,10 +1,9 @@
 package App;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.List;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
+import Database.dataBase;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -16,7 +15,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class FoodCourt {
@@ -27,31 +25,37 @@ public class FoodCourt {
 
     public Parent placeHolder() {
 
+        dataBase db = new dataBase();
+
+        ResultSet food = db.food();
+
         FlowPane flow = new FlowPane();
+        int i = 0;
+        try {
+            while (food.next()) {
 
-        for (int i = 0; i < 5; i++) {
+                try {
 
-            try {
-                InputStream stream = new FileInputStream(
-                        "D:\\newCode\\university\\FundamentalOfProgramming\\assigment\\CineBook\\cinebook\\src\\Image\\Spider-Man_No_Way_Home_poster.jpg");
-                Image image = new Image(stream);
-                ImageView imageView = new ImageView();
-                imageView.setImage(image);
+                    Image image = new Image(food.getBinaryStream("FOOD_PIC"));
+                    ImageView imageView = new ImageView();
+                    imageView.setImage(image);
 
-                VBox anchor = new VBox();
+                    imageView.setPreserveRatio(true);
+                    imageView.setFitHeight(250);
 
-                // anchor.setStyle("-fx-border-width: 50px");
-                // anchor.setStyle("-fx-border-color: rgb(201, 172, 9)");
+                    VBox anchor = new VBox();
 
-                anchor.getChildren().addAll(imageView, createPricePlaceholder(i), createPlaceholder(i));
-                // flow.setPadding(new Insets(10));
+                    anchor.getChildren().addAll(imageView, createPricePlaceholder(i), createPlaceholder(i));
 
-                flow.getChildren().add(anchor);
+                    flow.getChildren().add(anchor);
 
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                i++;
             }
-
+        } catch (SQLException e1) {
+            e1.printStackTrace();
         }
 
         // flow.setStyle(" -fx-background-color: #fdcf00;");
@@ -63,7 +67,7 @@ public class FoodCourt {
         Button b = new Button("Next");
 
         pane.setAlignment(Pos.CENTER);
-        b.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> check(e, flow));
+        b.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> check(e, flow, db));
 
         pane.setSpacing(20);
         pane.getChildren().addAll(flow, b);
@@ -105,8 +109,8 @@ public class FoodCourt {
         label.setStyle("-fx-font-size: 18px");
         label.setPrefWidth(250);
         label.setWrapText(true);
-        
-        priceBox.setStyle("-fx-background-color: red");
+
+        priceBox.setStyle("-fx-background-color: #ffd700");
         priceBox.getChildren().add(label);
         priceBox.setAlignment(Pos.CENTER);
 
@@ -124,7 +128,7 @@ public class FoodCourt {
         // label.setId(i.toString());
 
         placeholder.setPadding(new Insets(5));
-        placeholder.setStyle(" -fx-background-color: red");
+        placeholder.setStyle(" -fx-background-color:  #ffd700");
         placeholder.getChildren().addAll(plus, minus, label);
 
         placeholder.setSpacing(10);
@@ -172,7 +176,7 @@ public class FoodCourt {
             return new Label("0");
     }
 
-    private void check(MouseEvent e, FlowPane flow) {
+    private void check(MouseEvent e, FlowPane flow, dataBase db) {
 
         for (int i = 0; i < flow.getChildren().size(); i++) {
 
@@ -191,7 +195,7 @@ public class FoodCourt {
 
             Payment.setType(Integer.parseInt(temphbox.getId()), x);
         }
-
+        db.close();
         contoller.selectRoot(e, 5);
     }
 

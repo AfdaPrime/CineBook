@@ -7,6 +7,7 @@ package App;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import Database.dataBase;
 import SendEmail.SendEmail;
@@ -71,9 +72,16 @@ public class Payment {
     private VBox placeHolder = new VBox();
     private Button button = new Button("Pay");
 
-    public Parent placeHolder() {
+    private static String seat;
 
-        dataBase db = new dataBase();
+    public static void setSeat(String seat) {
+
+        Payment.seat = seat;
+    }
+
+    private dataBase db = new dataBase();
+
+    public Parent placeHolder() {
 
         ResultSet movieSet = db.movie();
 
@@ -168,7 +176,7 @@ public class Payment {
         // placeHolder.setStyle("-fx-background-color: red");
         placeHolder.setAlignment(Pos.CENTER);
 
-        button.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> contoller.selectRoot(e, 6));
+        button.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> misc(e));
 
         pane.setSpacing(10);
         pane.getChildren().addAll(placeHolder, button);
@@ -176,6 +184,13 @@ public class Payment {
         pane.setAlignment(Pos.CENTER);
 
         return pane;
+    }
+
+    private void misc(MouseEvent e) {
+
+        db.close();
+        contoller.selectRoot(e, 6);
+
     }
 
 }

@@ -1,7 +1,9 @@
 .button {
   -fx-font-size: 20px;
   background-color: red;
-  -fx-background-color: "pink";
+  -fx-background-color: #ffd700;
+  -fx-border-color: black;
+  -fx-border-width: 5px;
 }
 .bg {
   background-color: red;
@@ -11,24 +13,24 @@
 }
 .bg-1 {
   background-color: red;
-  -fx-background-color: "blue";
+  -fx-background-color: "black";
   -fx-translate-y: 10px;
   -fx-hgap: 10px;
   -fx-vgap: 10px;
   -fx-alignment: center;
 }
 .bg-2 {
-  -fx-background-color: "blue";
+  -fx-background-color: "black";
   -fx-font-size: 20;
 }
 .bg-3 {
-  -fx-background-color: "blue";
+  -fx-background-color: "black";
 }
 
 .background_selector {
   background-color: red;
   -fx-alignment: center;
-  -fx-background-color: "pink";
+  -fx-background-color: #ffd700;
   -fx-fill-width: true;
   -fx-border-color: rgb(201, 172, 9);
   -fx-border-width: 10px;
@@ -76,7 +78,7 @@
 }
 
 .buttonSeat-x {
-  -fx-background-color: rgb(46, 161, 35);
+  -fx-background-color: rgb(197, 194, 21);
   -fx-font-size: 15px;
 }
 .buttonSeat-v {
@@ -91,7 +93,8 @@
 
 .payment {
   -fx-border-width: 10px;
-  -fx-border-color: rgb(201, 172, 9);
+  -fx-border-color: #ffd700;
   -fx-font-size: 20;
-  -fx-background-color: red;
+  -fx-background-color: black;
+  -fx-text-fill: white;
 }

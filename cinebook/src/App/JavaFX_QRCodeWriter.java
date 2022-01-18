@@ -85,8 +85,8 @@ public class JavaFX_QRCodeWriter {
         ImageView qrView = new ImageView();
         qrView.setImage(SwingFXUtils.toFXImage(bufferedImage, null));
 
-        label.setStyle("-fx-font-size: 36");
-        second.setStyle("-fx-font-size: 24");
+        label.setStyle("-fx-font-size: 36;-fx-text-fill: white");
+        second.setStyle("-fx-font-size: 24;-fx-text-fill: white");
 
         buttonTimer(button, second);
         button.setText("Proceed");

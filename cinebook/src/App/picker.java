@@ -34,74 +34,38 @@ public class picker {
             ResultSet movie = db.movie();
             // flow.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
             flow.getStyleClass().add("bg-1");
-            // for (Integer i = 0; i < 3; i++) {
-            //
-            // InputStream stream;
-            //
-            // try {
-            // stream = new FileInputStream(
-            // "D:\\newCode\\university\\FundamentalOfProgramming\\assigment\\CineBook\\cinebook\\src\\Image\\Spider-Man_No_Way_Home_poster.jpg");
-            // Image image = new Image(stream);
-            // ImageView imageView = new ImageView();
-            // imageView.setImage(image);
-            //
-            // VBox anchor = new VBox();
-            // Label label = new Label();
-            //
-            // anchor.getStyleClass().add("background_selector");
-            // // anchor.setBorder(Border);
-            // label.setText("SpiderMan: No way home Season 2
-            // hdsuendosnsifdrndsofaoisekfnseiofsenkfhse9fjlkxcp-");
-            // label.getStyleClass().add("label");
-            // label.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-            //
-            // label.setPadding(new Insets(5));
-            //
-            // anchor.getChildren().addAll(imageView, label);
-            // anchor.setPrefWidth(200);
-            // anchor.setId(i.toString());
-            // flow.getChildren().add(anchor);
-            //
-            // anchor.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> contoller.selectRoot(e,
-            // 1));
-            //
-            // } catch (FileNotFoundException e1) {
-            // // TODO Auto-generated catch block
-            // e1.printStackTrace();
-            // }
-            // }
             Integer i = 0;
             while (movie.next()) {
 
-                try {
-                    InputStream stream = new FileInputStream(
-                            "D:\\newCode\\university\\FundamentalOfProgramming\\assigment\\CineBook\\cinebook\\src\\Image\\Spider-Man_No_Way_Home_poster.jpg");
-                    Image image = new Image(stream);
-                    ImageView imageView = new ImageView();
-                    imageView.setImage(image);
+                // InputStream stream = new FileInputStream(
+                // "D:\\newCode\\university\\FundamentalOfProgramming\\assigment\\CineBook\\cinebook\\src\\Image\\Spider-Man_No_Way_Home_poster.jpg");
+                // Image image = new Image(stream);
+                Image image = new Image(movie.getBinaryStream("MOVIES_PIC"));
+                ImageView imageView = new ImageView();
+                imageView.setImage(image);
 
-                    VBox anchor = new VBox();
-                    Label label = new Label();
+                imageView.setFitHeight(350);
+                // imageView.setFitWidth(100);
+                imageView.setPreserveRatio(true);
 
-                    anchor.getStyleClass().add("background_selector");
-                    // anchor.setBorder(Border);
-                    label.setText(movie.getString("MOVIES_NAME"));
-                    label.getStyleClass().add("label");
-                    label.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+                VBox anchor = new VBox();
+                Label label = new Label();
 
-                    label.setPadding(new Insets(5));
+                anchor.getStyleClass().add("background_selector");
+                // anchor.setBorder(Border);
+                label.setText(movie.getString("MOVIES_NAME"));
+                label.getStyleClass().add("label");
+                label.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
-                    anchor.getChildren().addAll(imageView, label);
-                    anchor.setPrefWidth(200);
-                    anchor.setId(i.toString());
-                    flow.getChildren().add(anchor);
+                label.setPadding(new Insets(5));
 
-                    anchor.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> contoller.selectRoot(e, 1));
+                anchor.getChildren().addAll(imageView, label);
+                anchor.setPrefWidth(200);
+                anchor.setId(i.toString());
+                flow.getChildren().add(anchor);
 
-                } catch (FileNotFoundException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
+                anchor.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> contoller.selectRoot(e, 1));
+
                 i++;
             }
 
