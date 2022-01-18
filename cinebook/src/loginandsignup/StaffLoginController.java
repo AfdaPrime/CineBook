@@ -93,24 +93,21 @@ public class StaffLoginController implements Initializable {
                         e.printStackTrace();
                     }
 
-                } else {
-
-                    staffUsernameTextfeild.setText("");
-                    staffIDField.setText("");
-                    staffpasswordFIeld.setText("");
-
-                    staffUsernameTextfeild.setStyle("-fx-border-color: red;");
-                    staffIDField.setStyle("-fx-border-color: red;");
-                    staffpasswordFIeld.setStyle("-fx-border-color: red;");
-
-                    staffUsernameTextfeild.setPromptText("PLEASE ENTER AGAIN");
-                    staffIDField.setPromptText("PLEASE ENTER AGAIN");
-                    staffpasswordFIeld.setPromptText("PLEASE ENTER AGAIN");
-
-                    break;
                 }
 
             }
+            staff.first();
+            staffUsernameTextfeild.setText("");
+            staffIDField.setText("");
+            staffpasswordFIeld.setText("");
+
+            staffUsernameTextfeild.setStyle("-fx-border-color: red;");
+            staffIDField.setStyle("-fx-border-color: red;");
+            staffpasswordFIeld.setStyle("-fx-border-color: red;");
+
+            staffUsernameTextfeild.setPromptText("PLEASE ENTER AGAIN");
+            staffIDField.setPromptText("PLEASE ENTER AGAIN");
+            staffpasswordFIeld.setPromptText("PLEASE ENTER AGAIN");
 
         } catch (SQLException ex) {
             Logger.getLogger(LoginFXMLController.class.getName()).log(Level.SEVERE, null, ex);

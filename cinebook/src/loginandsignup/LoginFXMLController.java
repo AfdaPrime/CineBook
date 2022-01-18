@@ -106,21 +106,21 @@ public class LoginFXMLController implements Initializable {
                         e.printStackTrace();
                     }
 
-                } else {
-
-                    usernameFeild.setText("");
-                    passwordFeild.setText("");
-
-                    usernameFeild.setStyle("-fx-border-color: red;");
-                    passwordFeild.setStyle("-fx-border-color: red;");
-
-                    usernameFeild.setPromptText("PLEASE ENTER AGAIN");
-                    passwordFeild.setPromptText("PLEASE ENTER AGAIN");
-
-                    break;
                 }
 
             }
+
+            customer.first();
+            usernameFeild.setText("");
+            passwordFeild.setText("");
+
+            usernameFeild.setStyle("-fx-border-color: red;");
+            passwordFeild.setStyle("-fx-border-color: red;");
+
+            usernameFeild.setPromptText("PLEASE ENTER AGAIN");
+            passwordFeild.setPromptText("PLEASE ENTER AGAIN");
+
+            // break;
 
         } catch (SQLException ex) {
             Logger.getLogger(LoginFXMLController.class.getName()).log(Level.SEVERE, null, ex);
