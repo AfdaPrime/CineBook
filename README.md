@@ -222,7 +222,7 @@ We used java.mail properties to connect with gmail server for password and email
 ## Flowchart
 ![image3](https://github.com/AfdaPrime/CineBook/blob/f48a9e8a69936f806b95fdf38a016dd8767e9512/Assignment%20FOP%20Flowchart1.drawio.png)
 
-![image4](https://github.com/AfdaPrime/CineBook/blob/f48a9e8a69936f806b95fdf38a016dd8767e9512/Assignment%20FOP%20Flowchart.drawio.png)
+![image4](https://github.com/AfdaPrime/CineBook/blob/b1c93bf30162f32a5cead725e8fd577b5e0f83c6/Assignment%20FOP%20Flowchart.drawio%20(1).png)
 
 ## Sample Output
 ![image5](https://github.com/AfdaPrime/CineBook/blob/1f3e2704ab242c72ffb7ff11c06c784173973cb9/output%201.jpeg)
