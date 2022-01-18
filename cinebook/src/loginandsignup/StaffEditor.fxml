@@ -9,7 +9,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="loginandsignup.StaffEditorController">
    <center>
       <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
@@ -24,22 +23,12 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="movielabel" layoutX="235.0" layoutY="126.0" text="Add/Remove Movies">
+            <Label fx:id="seatlabel" layoutX="241.0" layoutY="167.0" text="Movie Time">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="fnblabel" layoutX="235.0" layoutY="233.0" text="Food &amp; Beverages">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label fx:id="seatlabel" layoutX="235.0" layoutY="160.0" text="Seating">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label fx:id="paylabel" layoutX="235.0" layoutY="200.0" text="Payment">
+            <Label fx:id="paylabel" layoutX="241.0" layoutY="207.0" text="Payment">
                <font>
                   <Font size="18.0" />
                </font>
@@ -49,10 +38,8 @@
                   <Image url="@gsc_logo-3.jpg" />
                </image>
             </ImageView>
-            <Button layoutX="467.0" layoutY="127.0" mnemonicParsing="false" onAction="#movieButton" style="-fx-background-color: teal;" text="Click here" textFill="WHITE" />
-            <Button layoutX="467.0" layoutY="161.0" mnemonicParsing="false" onAction="#seatingButton" style="-fx-background-color: teal;" text="Click here" textFill="WHITE" />
-            <Button layoutX="467.0" layoutY="201.0" mnemonicParsing="false" onAction="#paymentButton" style="-fx-background-color: teal;" text="Click here" textFill="WHITE" />
-            <Button layoutX="467.0" layoutY="234.0" mnemonicParsing="false" onAction="#fnbButton" style="-fx-background-color: teal;" text="Click here" textFill="WHITE" />
+            <Button layoutX="473.0" layoutY="168.0" mnemonicParsing="false" onAction="#movieButton" style="-fx-background-color: teal;" text="Click here" textFill="WHITE" />
+            <Button layoutX="473.0" layoutY="208.0" mnemonicParsing="false" onAction="#paymentButton" style="-fx-background-color: teal;" text="Click here" textFill="WHITE" />
             <Line endX="5.20001220703125" endY="326.79998779296875" layoutX="214.0" layoutY="74.0" startX="5.20001220703125" startY="-79.60000610351562" />
          </children>
       </AnchorPane>

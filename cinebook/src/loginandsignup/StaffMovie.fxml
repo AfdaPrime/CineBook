@@ -26,7 +26,7 @@
       <AnchorPane prefHeight="400.0" prefWidth="398.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
             <Line endX="-101.0000228881836" endY="314.7999572753906" layoutX="101.0" layoutY="86.0" startX="-101.0000228881836" startY="-86.0" />
-            <Label fx:id="movieTitle" layoutX="93.0" layoutY="23.0" text="Add/Remove Movie">
+            <Label fx:id="movieTitle" layoutX="64.0" layoutY="23.0" text="Add/Remove Movie Time">
                <font>
                   <Font size="24.0" />
                </font>
@@ -43,7 +43,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="45.0" layoutY="323.0" mnemonicParsing="false" onAction="#removeButton" style="-fx-background-color: teal;" text="Remove" textFill="WHITE" />
+            <Button layoutX="219.0" layoutY="323.0" mnemonicParsing="false" onAction="#removeButton" style="-fx-background-color: teal;" text="Remove" textFill="WHITE" />
             <Button layoutX="314.0" layoutY="323.0" mnemonicParsing="false" onAction="#addButton" style="-fx-background-color: teal;" text="Add" textFill="WHITE" />
             <TextField fx:id="hall" layoutX="204.0" layoutY="155.0" promptText="Hall" />
             <Label fx:id="showtimelabel1" layoutX="46.0" layoutY="154.0" text="Movie Hall">
@@ -70,6 +70,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
+            <Button fx:id="returnButton" layoutX="58.0" layoutY="323.0" mnemonicParsing="false" onAction="#returnButton" style="-fx-background-color: teal;" text="Return" textFill="WHITE" />
          </children>
       </AnchorPane>
    </right>

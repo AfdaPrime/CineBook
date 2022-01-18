@@ -103,7 +103,7 @@ public class seat {
 
                         seatSet.next();
 
-                        b.setPrefWidth(50);
+                        b.setPrefWidth(60);
                         grid.add(b, j, i, 2, 1);
 
                         // System.out.println(grid.);
@@ -138,7 +138,7 @@ public class seat {
 
                         seatSet.next();
                         b.getStyleClass().add("buttonSeat-x");
-                        b.setPrefWidth(50);
+                        b.setPrefWidth(60);
                         grid.add(b, j, i, 2, 1);
                         b.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> collectLabel(e, confirm, "classic"));
 
@@ -160,7 +160,7 @@ public class seat {
         screen.setPrefHeight(40);
         screen.setPrefWidth(500);
 
-        // pane.getChildren().add(screen);
+        pane.getChildren().add(screen);
         pane.getChildren().add(grid);
         pane.getChildren().add(seatLabel);
         pane.getChildren().add(price);
@@ -195,6 +195,8 @@ public class seat {
         Label price = new Label();
         Button b = (Button) e.getSource();
         Button source = (Button) e.getSource();
+
+        System.out.println(b);
 
         String newCode = new String();
 
@@ -267,8 +269,8 @@ public class seat {
         seat.setText(updateText);
         Payment.setSeat(updateText);
         SendEmail.setSeat(updateText);
-        pane.getChildren().set(1, seat);
-        pane.getChildren().set(2, price);
+        pane.getChildren().set(2, seat);
+        pane.getChildren().set(3, price);
     }
 
     private void misc(MouseEvent e, dataBase db) {

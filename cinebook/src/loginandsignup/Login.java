@@ -29,7 +29,7 @@ public class Login extends Application {
 
     public void getFXMLLoader() throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("StaffMovie.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("StaffEditor.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setTitle("Add Movie Time");
