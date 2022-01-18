@@ -303,4 +303,3 @@ Solutions
 -	The database for the project is not an online database and only works on our local machine.
 -	Only the members on campus were able to do project testing as they had the laptop with the fully working program.
 
-# Source Code
