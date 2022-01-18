@@ -225,6 +225,23 @@ We used java.mail properties to connect with gmail server for password and email
 ![image4](https://github.com/AfdaPrime/CineBook/blob/f48a9e8a69936f806b95fdf38a016dd8767e9512/Assignment%20FOP%20Flowchart.drawio.png)
 
 ## Sample Output
+![image5](https://github.com/AfdaPrime/CineBook/blob/1f3e2704ab242c72ffb7ff11c06c784173973cb9/output%201.jpeg)
+
+![image6](https://github.com/AfdaPrime/CineBook/blob/1f3e2704ab242c72ffb7ff11c06c784173973cb9/output%202.jpeg)
+
+![image7](https://github.com/AfdaPrime/CineBook/blob/1f3e2704ab242c72ffb7ff11c06c784173973cb9/output%203.jpeg)
+
+![image8](https://github.com/AfdaPrime/CineBook/blob/1f3e2704ab242c72ffb7ff11c06c784173973cb9/output%204.jpeg)
+
+![image9](https://github.com/AfdaPrime/CineBook/blob/1f3e2704ab242c72ffb7ff11c06c784173973cb9/output%205.jpeg)
+
+![image10](https://github.com/AfdaPrime/CineBook/blob/1f3e2704ab242c72ffb7ff11c06c784173973cb9/output%206.jpeg)
+
+![image11](https://github.com/AfdaPrime/CineBook/blob/1f3e2704ab242c72ffb7ff11c06c784173973cb9/output%207.jpeg)
+
+![image12](https://github.com/AfdaPrime/CineBook/blob/1f3e2704ab242c72ffb7ff11c06c784173973cb9/output%208.jpeg)
+
+![image13](https://github.com/AfdaPrime/CineBook/blob/1f3e2704ab242c72ffb7ff11c06c784173973cb9/output%209.jpeg)
 
 # Managerial Report
 **1.	The formation of the team**
