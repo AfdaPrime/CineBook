@@ -81,7 +81,9 @@ public class StaffSignUpController implements Initializable {
 
         try {
 
-            if (staffId.getText().trim().isEmpty() || username.getText().trim().isEmpty() || name.getText().trim().isEmpty() || email.getText().trim().isEmpty() || phoneNum.getText().trim().isEmpty() || password.getText().trim().isEmpty()) {
+            if (staffId.getText().trim().isEmpty() || username.getText().trim().isEmpty()
+                    || name.getText().trim().isEmpty() || email.getText().trim().isEmpty()
+                    || phoneNum.getText().trim().isEmpty() || password.getText().trim().isEmpty()) {
 
                 staffId.setText("");
                 username.setText("");
@@ -121,7 +123,7 @@ public class StaffSignUpController implements Initializable {
                     staff.updateString("PHONE_NUMBER", phoneNum.getText());
                     staff.updateString("PASSWORD", password.getText());
 
-                    //Inserts a new row
+                    // Inserts a new row
                     staff.insertRow();
 
                     try {

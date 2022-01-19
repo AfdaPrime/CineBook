@@ -4,7 +4,9 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -32,41 +34,59 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <PasswordField fx:id="passwordField" layoutX="197.0" layoutY="199.0" onAction="#signInPasswordInput" promptText="Password" />
-            <TextField fx:id="usernameField" layoutX="197.0" layoutY="162.0" onAction="#signInUsernameInput" promptText="Username" />
-            <Label fx:id="usernameLabel" layoutX="48.0" layoutY="162.0" text="Username">
+            <PasswordField fx:id="passwordField" layoutX="200.0" layoutY="172.0" onAction="#signInPasswordInput" promptText="Password" />
+            <TextField fx:id="usernameField" layoutX="200.0" layoutY="146.0" onAction="#signInUsernameInput" promptText="Username" />
+            <Label fx:id="usernameLabel" layoutX="45.0" layoutY="149.0" text="Username">
                <font>
-                  <Font size="18.0" />
+                  <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="passwordLabel" layoutX="50.0" layoutY="198.0" text="Password">
+            <Label fx:id="passwordLabel" layoutX="47.0" layoutY="175.0" text="Password">
                <font>
-                  <Font size="18.0" />
+                  <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="295.0" layoutY="312.0" mnemonicParsing="false" onAction="#signInButton" onInputMethodTextChanged="#signInButton" style="-fx-background-color: teal;" text="Sign in" textFill="WHITE" />
-            <Label fx:id="emailLabel" layoutX="50.0" layoutY="124.0" text="Email">
+            <Button layoutX="297.0" layoutY="345.0" mnemonicParsing="false" onAction="#signInButton" onInputMethodTextChanged="#signInButton" style="-fx-background-color: teal;" text="Sign in" textFill="WHITE" />
+            <Label fx:id="emailLabel" layoutX="47.0" layoutY="123.0" text="Email">
                <font>
-                  <Font size="18.0" />
+                  <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="phoneLabel" layoutX="48.0" layoutY="235.0" text="Phone Number">
+            <Label fx:id="phoneLabel" layoutX="47.0" layoutY="201.0" text="Phone Number">
                <font>
-                  <Font size="18.0" />
+                  <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="emailField" layoutX="195.0" layoutY="125.0" promptText="Email" />
-            <TextField fx:id="phoneField" layoutX="197.0" layoutY="236.0" promptText="Phone Number" />
+            <TextField fx:id="emailField" layoutX="200.0" layoutY="120.0" promptText="Email" />
+            <TextField fx:id="phoneField" layoutX="200.0" layoutY="198.0" promptText="Phone Number" />
             <Line fx:id="line" endY="401.4000244140625" layoutY="1.0" startX="0.79998779296875" startY="-0.19999998807907104" />
-            <Button layoutX="47.0" layoutY="312.0" mnemonicParsing="false" onAction="#returnLoginButton" style="-fx-background-color: teal;" text="Return" textFill="WHITE" />
-            <Label fx:id="nameLabel1" layoutX="50.0" layoutY="88.0" text="Name">
+            <Button layoutX="49.0" layoutY="345.0" mnemonicParsing="false" onAction="#returnLoginButton" style="-fx-background-color: teal;" text="Return" textFill="WHITE" />
+            <Label fx:id="nameLabel1" layoutX="45.0" layoutY="97.0" text="Name">
                <font>
-                  <Font size="18.0" />
+                  <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="namelField" layoutX="195.0" layoutY="89.0" promptText="Name" />
-            <CheckBox fx:id="studentCheckbox" layoutX="49.0" layoutY="271.0" mnemonicParsing="false" onAction="#checkButton" prefHeight="23.0" prefWidth="118.0" text="Student" />
-            <TextField fx:id="matrixNumberField" layoutX="197.0" layoutY="270.0" promptText="Matrix Number" />
+            <TextField fx:id="namelField" layoutX="199.0" layoutY="94.0" prefHeight="0.0" prefWidth="150.0" promptText="Name" />
+            <CheckBox fx:id="studentCheckbox" layoutX="50.0" layoutY="225.0" mnemonicParsing="false" onAction="#checkButton" prefHeight="23.0" prefWidth="118.0" text="Student" />
+            <TextField fx:id="matrixNumberField" layoutX="200.0" layoutY="224.0" promptText="Matrix Number" />
+            <TextField fx:id="age" layoutX="200.0" layoutY="251.0" promptText="Age" />
+            <Label fx:id="staffIDLabel1111" layoutX="52.0" layoutY="254.0" text="Age">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="no" layoutX="199.0" layoutY="284.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="44.0" selected="true" text="NO">
+               <toggleGroup>
+                  <ToggleGroup fx:id="vacine" />
+               </toggleGroup>
+            </RadioButton>
+            <Label fx:id="staffIDLabel11111" layoutX="49.0" layoutY="287.0" prefHeight="15.0" prefWidth="127.0" text="Have you vacinated?">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="yes" layoutX="249.0" layoutY="284.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="71.0" text="YES" toggleGroup="$vacine" />
+            <Label fx:id="message" alignment="CENTER" layoutY="316.0" prefHeight="18.0" prefWidth="394.0" />
          </children>
       </AnchorPane>
    </right>

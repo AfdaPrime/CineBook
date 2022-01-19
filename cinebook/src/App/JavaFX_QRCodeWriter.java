@@ -102,6 +102,8 @@ public class JavaFX_QRCodeWriter {
 
     }
 
+    private Integer count = 0;
+
     private void buttonTask(MouseEvent e) {
 
         SendEmail sendEmail = new SendEmail();
@@ -110,25 +112,29 @@ public class JavaFX_QRCodeWriter {
 
         b.setText("Sending Email...");
         pane.getChildren().set(3, b);
+        count = 5;
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
 
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e1) {
-            e1.printStackTrace();
-        }
+            count--;
 
-        sendEmail.sendEmail();
+            if (count <= 0) {
 
-        contoller.selectRoot(e, 0);
+                sendEmail.sendEmail();
+
+                contoller.selectRoot(e, 0);
+
+                return;
+            }
+        }));
+        timeline.setCycleCount(5);
+        timeline.play();
 
     }
-
-    private Integer count = 30;
 
     private void buttonTimer(Button b, Label sec) {
 
         b.setDisable(true);
-
+        count = 30;
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
 
             count--;

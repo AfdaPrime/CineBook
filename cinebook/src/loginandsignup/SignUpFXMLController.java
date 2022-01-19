@@ -13,6 +13,9 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,10 +27,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+
 import javax.swing.JOptionPane;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.RadioButton;
 
 /**
  * FXML Controller class
@@ -47,27 +53,35 @@ public class SignUpFXMLController implements Initializable {
     @FXML
     private Label passwordLabel;
     @FXML
+    private Label message;
+    @FXML
     private ImageView cinemaPicture;
     @FXML
     private Label emailLabel;
     @FXML
     private Label phoneLabel;
     @FXML
-    private TextField emailField;
+    public TextField emailField;
     @FXML
-    private TextField phoneField;
+    public TextField phoneField;
     @FXML
-    private TextField namelField;
+    public TextField namelField;
     @FXML
-    private TextField usernameField;
+    public TextField usernameField;
     @FXML
-    private TextField matrixNumberField;
+    public TextField matrixNumberField;
     @FXML
-    private PasswordField passwordField;
+    private TextField age;
     @FXML
-    private CheckBox studentCheckbox;
+    public PasswordField passwordField;
+    @FXML
+    public CheckBox studentCheckbox;
     @FXML
     private Line line;
+    @FXML
+    private RadioButton no;
+    @FXML
+    private RadioButton yes;
 
     /**
      * Initializes the controller class.
@@ -84,78 +98,122 @@ public class SignUpFXMLController implements Initializable {
 
     }
 
+    // @FXML
+    // private void vacine(ActionEvent event) {
+
+    // if (yes.isSelected()) {
+    // System.out.println("YES");
+    // } else if (no.isSelected()) {
+    // System.out.println("NO");
+    // }
+
+    // }
+
+    private int count = 5;
+
     @FXML
-    private void signInButton(ActionEvent event) {
+    private void signInButton(ActionEvent event) throws InterruptedException, IOException {
 
         try {
 
-            if (usernameField.getText().trim().isEmpty() || passwordField.getText().trim().isEmpty()
-                    || namelField.getText().trim().isEmpty() || phoneField.getText().trim().isEmpty()) {
+            if (no.isSelected() || Integer.parseInt(age.getText()) < 18) {
 
-                usernameField.setText("");
-                passwordField.setText("");
-                namelField.setText("");
-                phoneField.setText("");
-                emailField.setText("");
+                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
 
-                usernameField.setStyle("-fx-border-color: red;");
-                passwordField.setStyle("-fx-border-color: red;");
-                namelField.setStyle("-fx-border-color: red;");
-                phoneField.setStyle("-fx-border-color: red;");
-                emailField.setStyle("-fx-border-color: red;");
+                    count--;
+                    message.setText("I`m sorry but you can`t sign up");
 
-                usernameField.setPromptText("PLEASE ENTER AGAIN");
-                passwordField.setPromptText("PLEASE ENTER AGAIN");
-                namelField.setPromptText("PLEASE ENTER AGAIN");
-                phoneField.setPromptText("PLEASE ENTER AGAIN");
-                emailField.setPromptText("PLEASE ENTER AGAIN");
-            } else {
+                    if (count <= 0) {
 
-                customer.moveToInsertRow();
+                        try {
+                            Parent root = FXMLLoader.load(getClass().getResource("LoginFXML.fxml"));
+                            Scene scene = new Scene(root);
+                            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                            stage.setScene(scene);
+                            stage.show();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
 
-                customer.updateString("USERNAME", usernameField.getText());
-                customer.updateString("PASSWORD", passwordField.getText());
-                customer.updateString("FULL_NAME", namelField.getText());
-                customer.updateString("PHONE_NUMBER", phoneField.getText());
-                customer.updateString("EMAIL", emailField.getText());
-
-                if (matrixNumberField.isDisable()) {
-
-                    customer.updateString("MATRIC_NUMBER", null);
-
-                } else {
-                    if (matrixNumberField.getText().trim().isEmpty()) {
-                        matrixNumberField.setText("");
-                        matrixNumberField.setStyle("-fx-border-color: red;");
-                        matrixNumberField.setPromptText("PLEASE ENTER AGAIN");
-                    } else {
-                        customer.updateString("MATRIC_NUMBER", matrixNumberField.getText());
-
+                        return;
                     }
+                }));
+                timeline.setCycleCount(5);
+                timeline.play();
+
+            } else {
+                if (usernameField.getText().trim().isEmpty() ||
+                        passwordField.getText().trim().isEmpty()
+                        || namelField.getText().trim().isEmpty() ||
+                        phoneField.getText().trim().isEmpty()) {
+
+                    usernameField.setText("");
+                    passwordField.setText("");
+                    namelField.setText("");
+                    phoneField.setText("");
+                    emailField.setText("");
+
+                    usernameField.setStyle("-fx-border-color: red;");
+                    passwordField.setStyle("-fx-border-color: red;");
+                    namelField.setStyle("-fx-border-color: red;");
+                    phoneField.setStyle("-fx-border-color: red;");
+                    emailField.setStyle("-fx-border-color: red;");
+
+                    usernameField.setPromptText("PLEASE ENTER AGAIN");
+                    passwordField.setPromptText("PLEASE ENTER AGAIN");
+                    namelField.setPromptText("PLEASE ENTER AGAIN");
+                    phoneField.setPromptText("PLEASE ENTER AGAIN");
+                    emailField.setPromptText("PLEASE ENTER AGAIN");
+                } else {
+
+                    customer.moveToInsertRow();
+
+                    customer.updateString("USERNAME", usernameField.getText());
+                    customer.updateString("PASSWORD", passwordField.getText());
+                    customer.updateString("FULL_NAME", namelField.getText());
+                    customer.updateString("PHONE_NUMBER", phoneField.getText());
+                    customer.updateString("EMAIL", emailField.getText());
+
+                    if (matrixNumberField.isDisable()) {
+
+                        customer.updateString("MATRIC_NUMBER", null);
+
+                    } else {
+                        if (matrixNumberField.getText().trim().isEmpty()) {
+                            matrixNumberField.setText("");
+                            matrixNumberField.setStyle("-fx-border-color: red;");
+                            matrixNumberField.setPromptText("PLEASE ENTER AGAIN");
+                        } else {
+                            customer.updateString("MATRIC_NUMBER", matrixNumberField.getText());
+
+                        }
+                    }
+
+                    // Inserts a new row
+                    customer.insertRow();
+
+                    try {
+                        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        App.Main main = new Main();
+
+                        Main.staff = false;
+
+                        stage.close();
+                        main.start();
+                        db.close();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
                 }
 
-                // Inserts a new row
-                customer.insertRow();
-
-                try {
-                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    App.Main main = new Main();
-
-                    Main.staff = false;
-
-                    stage.close();
-                    main.start();
-                    db.close();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
+                db.close();
             }
 
-            db.close();
         } catch (SQLException ex) {
-            Logger.getLogger(SignUpFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SignUpFXMLController.class.getName()).log(Level.SEVERE,
+                    null, ex);
         }
 
     }
