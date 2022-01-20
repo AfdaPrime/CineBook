@@ -106,7 +106,7 @@ As you can see we have added a few extra features such as a implementing a GUI, 
 
 **Login and Sign Up**
 
-Firstly, we decided to use a graphical interface for the login and sign up page which has to types which are the customer's site and the staff's side both of which can login or register their accounts in their respective pages. If the account exist then users can proceed from the login page and onwards to the next phase. If not then, users will have to make a new account in the sign up section. This applies for both customers and staffs. We store the accounts by using a database called Apache Derby which will be explained further in the database section.
+Firstly, we decided to use a graphical interface for the login and sign up page which has two types which are the customer's site and the staff's side both of which can login or register their accounts in their respective pages. If the account exist then users can proceed from the login page and onwards to the next phase. If not then, users will have to make a new account in the sign up section. This applies for both customers and staffs. We store the accounts by using a database called Apache Derby which will be explained further in the database section.
 
 **GUI (Graphical User Interface)**
 
