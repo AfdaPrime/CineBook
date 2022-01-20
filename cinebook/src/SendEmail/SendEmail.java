@@ -143,13 +143,13 @@ public class SendEmail {
                     + "\n\nThank you for watching with GSC.");
 
             // Attachment body part.
-            MimeBodyPart pdfAttachment = new MimeBodyPart();
-            pdfAttachment.attachFile(
+            MimeBodyPart Attachment = new MimeBodyPart();
+            Attachment.attachFile(
                     "D:\\newCode\\university\\FundamentalOfProgramming\\assigment\\CineBook\\cinebook\\src\\SendEmail\\qr.png");
 
             // Attach body parts
             emailContent.addBodyPart(textBodyPart);
-            emailContent.addBodyPart(pdfAttachment);
+            emailContent.addBodyPart(Attachment);
 
             // Attach multipart to message
             msg.setContent(emailContent);
