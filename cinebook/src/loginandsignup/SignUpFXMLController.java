@@ -6,6 +6,8 @@ package loginandsignup;
 
 import App.Main;
 import Database.dataBase;
+import SendEmail.SendEmail;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -98,17 +100,6 @@ public class SignUpFXMLController implements Initializable {
 
     }
 
-    // @FXML
-    // private void vacine(ActionEvent event) {
-
-    // if (yes.isSelected()) {
-    // System.out.println("YES");
-    // } else if (no.isSelected()) {
-    // System.out.println("NO");
-    // }
-
-    // }
-
     private int count = 5;
 
     @FXML
@@ -126,12 +117,16 @@ public class SignUpFXMLController implements Initializable {
                     if (count <= 0) {
 
                         try {
+                            SendEmail.setUser(customer.getString("USERNAME"), customer.getString("EMAIL"),
+                                    customer.getString("FULL_NAME"));
                             Parent root = FXMLLoader.load(getClass().getResource("LoginFXML.fxml"));
                             Scene scene = new Scene(root);
                             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                             stage.setScene(scene);
                             stage.show();
                         } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (SQLException e) {
                             e.printStackTrace();
                         }
 

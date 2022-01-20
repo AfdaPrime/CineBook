@@ -92,18 +92,19 @@ public class Payment {
         try {
             while (movieSet.next()) {
 
-                if (name != null) {
+                if(name ==null){
+                    Payment.ticketPrice = movieSet.getInt("PRICE_CLASSIC");
+                }else if (name.equals("")) {
 
-                    Payment.ticketPrice = 11;
+                    Payment.ticketPrice = movieSet.getInt("PRICE_CLASSIC");
 
                 } else {
-
-                    Payment.ticketPrice = 14;
+                    Payment.ticketPrice = movieSet.getInt("PRICE_STUDENT");
 
                 }
 
                 if (state.equals("premium")) {
-                    Payment.ticketPrice = 100;
+                    Payment.ticketPrice = movieSet.getInt("PRICE_PREMIUM");
                 }
 
             }

@@ -5,6 +5,8 @@
 package loginandsignup;
 
 import Database.dataBase;
+import SendEmail.SendEmail;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -92,7 +94,10 @@ public class LoginFXMLController implements Initializable {
 
                     Payment.setName(customer.getString("MATRIC_NUMBER"));
                     seat.setName(customer.getString("MATRIC_NUMBER"));
+                    SendEmail.setUser(customer.getString("USERNAME"), customer.getString("EMAIL"),
+                            customer.getString("FULL_NAME"));
                     try {
+
                         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         App.Main main = new Main();
 

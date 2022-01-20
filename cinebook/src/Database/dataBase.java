@@ -99,6 +99,15 @@ public class dataBase {
 
     }
 
+    public ResultSet booking() {
+
+        this.SQL += ".BOOKING_INFO";
+
+        this.rs = connection(SQL);
+
+        return rs;
+    }
+
     public void close() {
         try {
             rs.close();

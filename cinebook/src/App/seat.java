@@ -208,6 +208,7 @@ public class seat {
         seat.setPrefHeight(40);
 
         price.setStyle("-fx-font-size: 24px;-fx-text-fill: white");
+
         try {
 
             while (movieset.next()) {
@@ -223,11 +224,13 @@ public class seat {
                 priceInfo = movieset.getInt("PRICE_PREMIUM");
 
             } else {
-
-                if (name != null) {
-                    priceInfo = movieset.getInt("PRICE_STUDENT");
-                } else {
+                
+                if(name ==null){
                     priceInfo = movieset.getInt("PRICE_CLASSIC");
+                }else if (name.equals("")) {
+                    priceInfo = movieset.getInt("PRICE_CLASSIC");
+                } else {
+                    priceInfo = movieset.getInt("PRICE_STUDENT");
                 }
 
             }

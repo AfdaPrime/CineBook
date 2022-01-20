@@ -6,6 +6,8 @@ package loginandsignup;
 
 import App.Main;
 import Database.dataBase;
+import SendEmail.SendEmail;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -78,6 +80,9 @@ public class StaffLoginController implements Initializable {
 
                 if (staff.getString("USERNAME").equals(username) && staff.getString("PASSWORD").equals(password)
                         && staff.getString("STAFF_ID").equals(staffId)) {
+
+                    SendEmail.setUser(staff.getString("USERNAME"), staff.getString("EMAIL"),
+                            staff.getString("FULL_NAME"));
 
                     try {
                         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

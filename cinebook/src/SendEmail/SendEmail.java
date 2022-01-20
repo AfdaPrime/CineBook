@@ -45,6 +45,18 @@ public class SendEmail {
     private static String location = new String();
     private static String hall = new String();
 
+    private static String username = new String();
+    private static String email = new String();
+    private static String fullName = new String();
+    // qrID Generator
+    private String qrID = "";
+
+    public static void setUser(String username, String email, String fullName) {
+        SendEmail.username = username;
+        SendEmail.email = email;
+        SendEmail.fullName = fullName;
+    }
+
     public static void setMovie(String date, String movie, String time, String location, String hall) {
         SendEmail.date = date;
         SendEmail.movie = movie;
@@ -71,7 +83,7 @@ public class SendEmail {
         final String username = "cubacinema118@gmail.com";
         final String password = "cubacinema123";
         String fromEmail = "cubacinema118@gmail.com";
-        String toEmail = "afiq.danish306@gmail.com";
+        String toEmail = SendEmail.email;
 
         Properties properties = new Properties();
         properties.put("mail.smtp.auth", "true");
@@ -88,9 +100,6 @@ public class SendEmail {
 
         // Qr element
         Random random = new Random();
-
-        // qrID Generator
-        String qrID = "";
 
         String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#$%&";
 
@@ -123,7 +132,7 @@ public class SendEmail {
         try {
             msg.setFrom(new InternetAddress(fromEmail));
             msg.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
-            msg.setSubject("Subject Line");
+            msg.setSubject("GSC MOVIE TICKET");
 
             Multipart emailContent = new MimeMultipart();
 
@@ -158,6 +167,7 @@ public class SendEmail {
                 System.out.println("Failed to delete the selected file");
             }
             updateMovie();
+            updateBooking();
             System.out.println("Sent message");
         } catch (MessagingException | IOException e) {
             e.printStackTrace();
@@ -199,6 +209,37 @@ public class SendEmail {
             db.close();
         } catch (SQLException e1) {
             e1.printStackTrace();
+        }
+
+    }
+
+    public void updateBooking() {
+
+        dataBase db = new dataBase();
+
+        ResultSet booking = db.booking();
+
+        try {
+            booking.moveToInsertRow();
+
+            booking.updateString("QR_ID", qrID);
+            booking.updateString("CUSTOMER_USERNAME", username);
+            booking.updateString("CUSTOMER_FULL_NAME", fullName);
+            booking.updateString("MOVIES_NAME", movie);
+            booking.updateString("MOVIES_BRANCH", location);
+            booking.updateString("MOVIES_DAY", time);
+            booking.updateString("MOVIES_DATE", date);
+            booking.updateString("MOVIES_TIME", time);
+            booking.updateString("CUSTOMER_HALL", hall);
+            booking.updateString("CUSTOMER_SEAT", seatPlace);
+            booking.updateString("FOOD_ORDERED", fnbPlace);
+
+            booking.insertRow();
+
+            db.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
 
     }

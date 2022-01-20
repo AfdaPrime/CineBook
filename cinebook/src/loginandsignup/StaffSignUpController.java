@@ -6,6 +6,8 @@ package loginandsignup;
 
 import App.Main;
 import Database.dataBase;
+import SendEmail.SendEmail;
+
 import java.io.IOException;
 import static java.lang.Double.NaN;
 import java.net.URL;
@@ -127,6 +129,8 @@ public class StaffSignUpController implements Initializable {
                     staff.insertRow();
 
                     try {
+                        SendEmail.setUser(staff.getString("USERNAME"), staff.getString("EMAIL"),
+                                staff.getString("FULL_NAME"));
                         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         App.Main main = new Main();
 
